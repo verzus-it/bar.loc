@@ -50,6 +50,11 @@ $config = [
             ],
         ],
     ],
+	'modules' => [
+		'crm' => [
+			'class' => 'app\modules\crm\Module',
+		],
+	],
     'params' => $params,
 ];
 
