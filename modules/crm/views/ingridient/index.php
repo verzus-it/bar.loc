@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\IngridientSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Ingridients';
+$this->title = 'Ингридиенты';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ingridient-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Ingridient', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить ингидиент', ['update', 'id' => 0], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -25,16 +25,31 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
             'id',
             'title',
             'price',
-            'visible',
+
+	        [
+		        'attribute' => 'image',
+		        'format' => 'html',
+		        'value' => function($data){
+			        return $data->image ? Html::img('@web/'.$data->image, ['style' => ['max-width' => '150px', 'max-height' => '150px'], 'class' => 'center-block']) : '';
+		        }
+	        ],
+            [
+				'attribute' => 'visible',
+				'value' => function($data){
+					return $data->visible ? 'да' : 'нет';
+				}
+			],
             'description:ntext',
-            //'productID',
-            //'amountInProduct',
-            //'active',
+	        [
+		        'attribute' => 'active',
+		        'value' => function($data){
+			        return $data->active ? 'да' : 'нет';
+		        }
+	        ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

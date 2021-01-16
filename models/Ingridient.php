@@ -33,9 +33,8 @@ class Ingridient extends \yii\db\ActiveRecord
     {
         return [
             [['price'], 'number'],
-            [['visible', 'productID', 'amountInProduct', 'active'], 'integer'],
+            [['visible', 'active'], 'integer'],
             [['description'], 'string'],
-            [['productID'], 'required'],
             [['title'], 'string', 'max' => 50],
         ];
     }
@@ -47,13 +46,12 @@ class Ingridient extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'price' => 'Price',
-            'visible' => 'Visible',
-            'description' => 'Description',
-            'productID' => 'Product ID',
-            'amountInProduct' => 'Amount In Product',
-            'active' => 'Active',
+            'title' => 'Наименование',
+            'price' => 'Стоимость, грн/литр(кг)',
+            'visible' => 'Видимый для клиента',
+            'description' => 'Описание',
+            'image' => 'Изображение',
+            'active' => 'Активен',
         ];
     }
 }

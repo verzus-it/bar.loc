@@ -5,6 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+	'name' => 'Remote bar',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -53,6 +54,7 @@ $config = [
 	'modules' => [
 		'crm' => [
 			'class' => 'app\modules\crm\Module',
+			'layout' => 'main',
 		],
 	],
     'params' => $params,

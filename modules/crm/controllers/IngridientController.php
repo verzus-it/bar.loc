@@ -5,9 +5,11 @@ namespace app\modules\crm\controllers;
 use Yii;
 use app\models\Ingridient;
 use app\models\IngridientSearch;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * IngridientController implements the CRUD actions for Ingridient model.
@@ -84,10 +86,16 @@ class IngridientController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $model = $id ? $this->findModel($id) : new Ingridient();
+        if(Yii::$app->request->post() && $model->load(Yii::$app->request->post())){
+        	$uploadedImage = UploadedFile::getInstance($model, 'image');
+        	if($uploadedImage){
+		        $uploadedImage->saveAs('uploads/' . $uploadedImage->baseName . '.' . $uploadedImage->extension);
+		        $model->image = 'uploads/' . $uploadedImage->baseName . '.' . $uploadedImage->extension;
+	        }
+	        if($model->save()){
+		        return $this->redirect(['view', 'id' => $model->id]);
+	        }
         }
 
         return $this->render('update', [

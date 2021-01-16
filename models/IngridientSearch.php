@@ -17,7 +17,7 @@ class IngridientSearch extends Ingridient
     public function rules()
     {
         return [
-            [['id', 'visible', 'productID', 'amountInProduct', 'active'], 'integer'],
+            [['id', 'visible', 'active'], 'integer'],
             [['title', 'description'], 'safe'],
             [['price'], 'number'],
         ];
@@ -62,8 +62,6 @@ class IngridientSearch extends Ingridient
             'id' => $this->id,
             'price' => $this->price,
             'visible' => $this->visible,
-            'productID' => $this->productID,
-            'amountInProduct' => $this->amountInProduct,
             'active' => $this->active,
         ]);
 

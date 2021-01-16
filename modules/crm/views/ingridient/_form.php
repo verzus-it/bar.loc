@@ -15,19 +15,17 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
+	
+    <?= $form->field($model, 'image')->fileInput() ?>
 
-    <?= $form->field($model, 'visible')->textInput() ?>
+    <?= $form->field($model, 'visible')->checkbox() ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'productID')->textInput() ?>
-
-    <?= $form->field($model, 'amountInProduct')->textInput() ?>
-
-    <?= $form->field($model, 'active')->textInput() ?>
+    <?= $form->field($model, 'active')->checkbox() ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
