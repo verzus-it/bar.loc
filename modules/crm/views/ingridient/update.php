@@ -11,7 +11,7 @@ if($model->id){
 	$this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 	$this->params['breadcrumbs'][] = 'Изменение';
 }else{
-	$this->title = 'Добавить ингридиент';
+	$this->title = 'Добавление ингридиента';
 	$this->params['breadcrumbs'][] = ['label' => 'Ингридиенты', 'url' => ['index']];
 	$this->params['breadcrumbs'][] = $this->title;
 }

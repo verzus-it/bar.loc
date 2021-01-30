@@ -5,6 +5,7 @@ namespace app\modules\crm\controllers;
 use Yii;
 use app\models\Product;
 use app\models\ProductSearch;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -84,9 +85,11 @@ class ProductController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+	    $model = $id ? $this->findModel($id) : new Product();
+		if(Yii::$app->request->isPost){
+		
+		}
+	    if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

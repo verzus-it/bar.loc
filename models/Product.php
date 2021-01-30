@@ -15,7 +15,7 @@ use Yii;
  */
 class Product extends \yii\db\ActiveRecord
 {
-    /**
+	/**
      * {@inheritdoc}
      */
     public static function tableName()
@@ -30,7 +30,7 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             [['price'], 'number'],
-            [['description'], 'string'],
+            [['description', 'optionTitle'], 'string'],
             [['title', 'productCategory'], 'string', 'max' => 50],
         ];
     }
@@ -42,10 +42,15 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'price' => 'Price',
-            'description' => 'Description',
-            'productCategory' => 'Product Category',
+            'title' => 'Название',
+            'price' => 'Стоимость',
+            'description' => 'Описание',
+            'productCategory' => 'Тип товара',
+            'optionTitle' => 'Название опции',
         ];
+    }
+	
+	public function getDescription(){
+    	return trim($this->description) ?: ' - ';
     }
 }
