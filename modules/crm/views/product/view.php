@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -10,6 +11,8 @@ $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Товары', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
+
+$this->registerJsFile('@web/js/product.js', ['depends' => 'yii\web\JqueryAsset', 'position' => $this::POS_END]);
 ?>
 <div class="product-view">
 
@@ -79,7 +82,9 @@ $this->params['breadcrumbs'][] = $this->title;
 			<div class="panel panel-default">
 				<div class="panel-heading flex justify-content-space-between align-items-center">
 					<h3 class="panel-title"><b>Состав минимальной порции:</b></h3>
-					<button class="btn btn-success btn-xs"><span class="glyphicon glyphicon-plus"></span></button>
+					<button class="btn btn-success btn-xs updateProductCompositionButton" data-toggle="modal" data-target="#updateProductComposition" data-url="<?= Url::toRoute(['product/update-composition', 'id' => 0])?>">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
 				</div>
 				<table class="table table-responsive table-bordered">
 					<tr>
@@ -95,7 +100,7 @@ $this->params['breadcrumbs'][] = $this->title;
 							<span class="glyphicon glyphicon-eye-open text-success"></span>
 						</td>
 						<td style="width: 15%" class="text-center">
-							<button class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>
+							<button class="btn btn-warning btn-xs updateProductCompositionButton" data-toggle="modal" data-target="#updateProductComposition" data-url="<?= Url::toRoute(['product/update-composition', 'id' => 1])?>"><span class="glyphicon glyphicon-pencil"></span></button>
 							<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button>
 						</td>
 					</tr>
@@ -115,5 +120,19 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </div>
 
+<div class="modal fade" id="updateProductComposition">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Изменение ингридиента</h4>
+			</div>
+			<div class="modal-body">
 
-
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary">Сохранить</button>
+			</div>
+		</div>
+	</div>
+</div>

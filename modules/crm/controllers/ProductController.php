@@ -2,6 +2,7 @@
 
 namespace app\modules\crm\controllers;
 
+use app\models\ProductComposition;
 use Yii;
 use app\models\Product;
 use app\models\ProductSearch;
@@ -30,6 +31,14 @@ class ProductController extends Controller
         ];
     }
 
+    public function actionUpdateComposition($id){
+	    
+    	$model = $id ? ProductComposition::findOne($id) : new ProductComposition();
+	    return $this->renderAjax('updateComposition', [
+		    'model' => $model,
+	    ]);
+    }
+    
     /**
      * Lists all Product models.
      * @return mixed
