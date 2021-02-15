@@ -2,6 +2,7 @@
 
 namespace app\modules\crm\controllers;
 
+use app\models\Ingridient;
 use app\models\ProductComposition;
 use Yii;
 use app\models\Product;
@@ -36,6 +37,7 @@ class ProductController extends Controller
     	$model = $id ? ProductComposition::findOne($id) : new ProductComposition();
 	    return $this->renderAjax('updateComposition', [
 		    'model' => $model,
+		    'ingridients' => Ingridient::find()->select('id, title')->all()
 	    ]);
     }
     
@@ -105,6 +107,11 @@ class ProductController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
+    }
+    
+    public function actionSaveProductComposition(){
+    	VarDumper::dump(Yii::$app->request->get());
+    	VarDumper::dump(Yii::$app->request->post());
     }
 
     /**

@@ -11,8 +11,9 @@ $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Товары', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
-
 $this->registerJsFile('@web/js/product.js', ['depends' => 'yii\web\JqueryAsset', 'position' => $this::POS_END]);
+$this->registerJsFile('@web/js/libs/bootstrap-select.min.js', ['depends' => 'yii\web\JqueryAsset', 'position' => $this::POS_END]);
+$this->registerCssFile('@web/css/libs/bootstrap-select.min.css');
 ?>
 <div class="product-view">
 
@@ -131,7 +132,7 @@ $this->registerJsFile('@web/js/product.js', ['depends' => 'yii\web\JqueryAsset',
 
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary">Сохранить</button>
+				<button type="button" class="btn btn-primary" id="saveProductComposition">Сохранить</button>
 			</div>
 		</div>
 	</div>
