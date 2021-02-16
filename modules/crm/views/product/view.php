@@ -132,7 +132,7 @@ $this->registerCssFile('@web/css/libs/bootstrap-select.min.css');
 
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" id="saveProductComposition">Сохранить</button>
+				<button type="button" class="btn btn-primary" id="saveProductComposition" data-url="<?= Url::toRoute(['product/save-product-composition', 'productID' => $model->id])?>">Сохранить</button>
 			</div>
 		</div>
 	</div>

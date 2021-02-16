@@ -110,8 +110,16 @@ class ProductController extends Controller
     }
     
     public function actionSaveProductComposition(){
-    	VarDumper::dump(Yii::$app->request->get());
-    	VarDumper::dump(Yii::$app->request->post());
+	    $model = (int)Yii::$app->request->post()['id'] ? ProductComposition::findOne(Yii::$app->request->post()['id']) : new ProductComposition();
+	    $model->load(Yii::$app->request->post(), '');
+	    $model->displayed = (int)(bool)Yii::$app->request->post()['displayed'];
+	    $model->active = (int)(bool)Yii::$app->request->post()['active'];
+	    $model->productID = (int)Yii::$app->request->get()['productID'];
+	    if ($model->save()) {
+		    return json_encode(['status' => true]);
+	    }else{
+		    return json_encode(['status' => false]);
+	    }
     }
 
     /**

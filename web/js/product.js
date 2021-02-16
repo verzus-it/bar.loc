@@ -10,11 +10,11 @@ $('.updateProductCompositionButton').on('click', function() {
 });
 $('#saveProductComposition').on('click', function() {
     $.ajax({
-        url: '../product/save-product-composition',
+        url: $(this).attr('data-url'),
         data: $('#updateProductComposition select, #updateProductComposition input').serialize(),
+        type: 'POST',
         success: function(data) {
             console.log(data)
-
         }
     });
 });

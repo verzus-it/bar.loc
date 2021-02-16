@@ -11,6 +11,8 @@ use Yii;
  * @property int|null $productID Товар
  * @property int|null $ingridientID Ингридиент
  * @property int|null $amountInProduct Количество ингридиента в продукте. В граммах или милилитрах
+ * @property int|null $active Входит в состав товара
+ * @property int|null $displayed Видимый клиенту
  */
 class ProductComposition extends \yii\db\ActiveRecord
 {
@@ -28,7 +30,7 @@ class ProductComposition extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['productID', 'ingridientID', 'amountInProduct'], 'integer'],
+            [['productID', 'ingridientID', 'amountInProduct', 'active', 'displayed'], 'integer'],
         ];
     }
 
@@ -42,6 +44,8 @@ class ProductComposition extends \yii\db\ActiveRecord
             'productID' => 'Product ID',
             'ingridientID' => 'Ingridient ID',
             'amountInProduct' => 'Amount In Product',
+            'active' => 'Active',
+            'displayed' => 'Displayed',
         ];
     }
 }
