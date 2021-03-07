@@ -58,24 +58,62 @@ $this->registerCssFile('@web/css/libs/bootstrap-select.min.css');
 				</div>
 			</div>
 			
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><b>Рецепт:</b></h3>
+				</div>
+				<div class="panel-body">
+
+				</div>
+			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><b>Фото:</b></h3>
+				</div>
+				<div class="panel-body">
+
+				</div>
+			</div>
+			
 		</div>
 		<div class="col-lg-6">
 
 			<div class="panel panel-default">
 				<div class="panel-heading flex justify-content-space-between align-items-center">
 					<h3 class="panel-title"><b>Цены:</b></h3>
-					<button class="btn btn-success btn-xs"><span class="glyphicon glyphicon-plus"></span></button>
+					<button class="btn btn-success btn-xs updateProductOptionButton" data-toggle="modal" data-target="#updateProductOption" data-url="<?= Url::toRoute(['product/update-option', 'id' => 0])?>">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
 				</div>
-				
 				<table class="table table-responsive table-bordered">
-					<tr>
-						<td style="width: 45%">100 мл.</td>
-						<td style="width: 40%">130 грн</td>
-						<td style="width: 15%" class="text-center">
-							<button class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>
-							<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button>
-						</td>
-					</tr>
+					<?if($model->options){
+						foreach($model->options as $option){?>
+							<tr>
+								<td style="width: 35%">
+									<?=$option->title?>
+								</td>
+								<td style="width: 35%" class="text-center">
+									<?=$option->price?> грн.
+								</td>
+								<td style="width: 15%" class="text-center">
+									<?= $option->active ? '<span class="glyphicon glyphicon-ok text-success"></span>' : '<span class="glyphicon glyphicon-off text-danger"></span>'?>
+								</td>
+								<td style="width: 15%" class="text-center">
+									<button class="btn btn-warning btn-xs updateProductOptionButton" data-toggle="modal" data-target="#updateProductOption" data-url="<?= Url::toRoute(['product/update-option', 'id' => $option->id])?>"><span class="glyphicon glyphicon-pencil"></span></button>
+									<?= Html::a('<span class="glyphicon glyphicon-remove"></span>', ['product-option/delete', 'id' => $option->id], [
+										'class' => 'btn btn-danger btn-xs',
+										'data' => [
+											'confirm' => 'Вы хотите удалить опцию?',
+											'method' => 'post',
+										],
+									]) ?>
+								</td>
+							</tr>
+						<?}
+					}else{?>
+						<tr><td colspan="10"> - </td></tr>
+					<?}?>
 
 				</table>
 			</div>
@@ -88,27 +126,41 @@ $this->registerCssFile('@web/css/libs/bootstrap-select.min.css');
 					</button>
 				</div>
 				<table class="table table-responsive table-bordered">
-					<tr>
-						<td style="width: 35%">
-							Водка
-						</td>
-						<td style="width: 35%" class="text-center">
-							100 мл.
-						</td>
-						<td style="width: 15%" class="text-center">
-							<span class="glyphicon glyphicon-ok text-success"></span>
-							&ensp;
-							<span class="glyphicon glyphicon-eye-open text-success"></span>
-						</td>
-						<td style="width: 15%" class="text-center">
-							<button class="btn btn-warning btn-xs updateProductCompositionButton" data-toggle="modal" data-target="#updateProductComposition" data-url="<?= Url::toRoute(['product/update-composition', 'id' => 1])?>"><span class="glyphicon glyphicon-pencil"></span></button>
-							<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button>
-						</td>
-					</tr>
+					<?if($model->composition){
+						foreach($model->composition as $composition){?>
+							<tr>
+								<td style="width: 35%">
+									<a href="<?=Url::to(['ingridient/view', 'id' => $composition->ingridient->id])?>">
+										<?=$composition->ingridient->title?>
+									</a>
+									
+								</td>
+								<td style="width: 35%" class="text-center">
+									<?=(int)$composition->amountInProduct?> мл(гр)
+								</td>
+								<td style="width: 15%" class="text-center">
+									<?= $composition->active ? '<span class="glyphicon glyphicon-ok text-success"></span>' : '<span class="glyphicon glyphicon-off text-danger"></span>'?>
+									&ensp;
+									<?= $composition->displayed ? '<span class="glyphicon glyphicon-eye-open text-success"></span>' : '<span class="glyphicon glyphicon-eye-close text-danger"></span>'?>
+								</td>
+								<td style="width: 15%" class="text-center">
+									<button class="btn btn-warning btn-xs updateProductCompositionButton" data-toggle="modal" data-target="#updateProductComposition" data-url="<?= Url::toRoute(['product/update-composition', 'id' => $composition->id])?>"><span class="glyphicon glyphicon-pencil"></span></button>
+									<?= Html::a('<span class="glyphicon glyphicon-remove"></span>', ['product-composition/delete', 'id' => $composition->id], [
+										'class' => 'btn btn-danger btn-xs',
+										'data' => [
+											'confirm' => 'Вы хотите удалить ингридиент из состава?',
+											'method' => 'post',
+										],
+									]) ?>
+								</td>
+							</tr>
+						<?}
+					}?>
+					
 					
 					<tr>
 						<td colspan="3">Себестоимость товара(без учета упаковки и доставки)</td>
-						<td><b>57 грн</b></td>
+						<td><b><?=number_format($model->costPrice, 0, '.', ' ')?> грн</b></td>
 					</tr>
 
 				</table>
@@ -133,6 +185,23 @@ $this->registerCssFile('@web/css/libs/bootstrap-select.min.css');
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-primary" id="saveProductComposition" data-url="<?= Url::toRoute(['product/save-product-composition', 'productID' => $model->id])?>">Сохранить</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="updateProductOption">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Изменение опции</h4>
+			</div>
+			<div class="modal-body">
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" id="saveProductOption" data-url="<?= Url::toRoute(['product/save-product-option', 'productID' => $model->id])?>">Сохранить</button>
 			</div>
 		</div>
 	</div>

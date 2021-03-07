@@ -17,10 +17,10 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
 	
     <?= $form->field($model, 'image')->fileInput() ?>
+	
+	<?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'visible')->checkbox() ?>
-
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'active')->checkbox() ?>
 

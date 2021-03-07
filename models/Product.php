@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\VarDumper;
 
 /**
  * This is the model class for table "product".
@@ -43,14 +44,32 @@ class Product extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'title' => 'Название',
-            'price' => 'Стоимость',
             'description' => 'Описание',
             'productCategory' => 'Тип товара',
-            'optionTitle' => 'Название опции',
         ];
     }
 	
 	public function getDescription(){
     	return trim($this->description) ?: ' - ';
     }
+    
+    public function getCostPrice(){
+    	$costPrice = 0;
+    	if($this->composition){
+		    foreach($this->composition as $item){
+			   $costPrice+= $item->ingridient->price * $item->amountInProduct / 1000;
+    		}
+	    }
+    	return $costPrice;
+    }
+	
+	public function getComposition()
+	{
+		return $this->hasMany(ProductComposition::className(), ['productID' => 'id']);
+	}
+	
+	public function getOptions()
+	{
+		return $this->hasMany(ProductOption::className(), ['productID' => 'id']);
+	}
 }

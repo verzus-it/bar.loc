@@ -4,6 +4,7 @@ namespace app\modules\crm\controllers;
 
 use app\models\Ingridient;
 use app\models\ProductComposition;
+use app\models\ProductOption;
 use Yii;
 use app\models\Product;
 use app\models\ProductSearch;
@@ -38,6 +39,14 @@ class ProductController extends Controller
 	    return $this->renderAjax('updateComposition', [
 		    'model' => $model,
 		    'ingridients' => Ingridient::find()->select('id, title')->all()
+	    ]);
+    }
+
+    public function actionUpdateOption($id){
+	    
+    	$model = $id ? ProductOption::findOne($id) : new ProductOption();
+	    return $this->renderAjax('updateOption', [
+		    'model' => $model
 	    ]);
     }
     
@@ -111,10 +120,26 @@ class ProductController extends Controller
     
     public function actionSaveProductComposition(){
 	    $model = (int)Yii::$app->request->post()['id'] ? ProductComposition::findOne(Yii::$app->request->post()['id']) : new ProductComposition();
+	    
 	    $model->load(Yii::$app->request->post(), '');
 	    $model->displayed = (int)(bool)Yii::$app->request->post()['displayed'];
 	    $model->active = (int)(bool)Yii::$app->request->post()['active'];
 	    $model->productID = (int)Yii::$app->request->get()['productID'];
+	    
+	    if ($model->save()) {
+		    return json_encode(['status' => true]);
+	    }else{
+		    return json_encode(['status' => false]);
+	    }
+    }
+    
+    public function actionSaveProductOption(){
+	    $model = (int)Yii::$app->request->post()['id'] ? ProductOption::findOne(Yii::$app->request->post()['id']) : new ProductOption();
+	    
+	    $model->load(Yii::$app->request->post(), '');
+	    $model->active = (int)(bool)Yii::$app->request->post()['active'];
+	    $model->productID = (int)Yii::$app->request->get()['productID'];
+	    
 	    if ($model->save()) {
 		    return json_encode(['status' => true]);
 	    }else{

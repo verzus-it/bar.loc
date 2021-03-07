@@ -54,4 +54,8 @@ class Ingridient extends \yii\db\ActiveRecord
             'active' => 'Активен',
         ];
     }
+	
+	public function getDescription(){
+		return trim($this->description) ?: ' - ';
+	}
 }

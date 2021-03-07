@@ -48,4 +48,12 @@ class ProductComposition extends \yii\db\ActiveRecord
             'displayed' => 'Displayed',
         ];
     }
+    
+    public function getProduct(){
+    	return $this->hasOne(Product::className(), ['id' => 'productID']);
+    }
+    
+    public function getIngridient(){
+    	return $this->hasOne(Ingridient::className(), ['id' => 'ingridientID']);
+    }
 }

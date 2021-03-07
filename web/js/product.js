@@ -8,13 +8,45 @@ $('.updateProductCompositionButton').on('click', function() {
         }
     });
 });
+$('.updateProductOptionButton').on('click', function() {
+    $.ajax({
+        url: $(this).attr('data-url'),
+        success: function(data) {
+            $('#updateProductOption .modal-body').html(data);
+            $('#updateProductOption').modal('show')
+
+        }
+    });
+});
+
 $('#saveProductComposition').on('click', function() {
     $.ajax({
         url: $(this).attr('data-url'),
         data: $('#updateProductComposition select, #updateProductComposition input').serialize(),
         type: 'POST',
-        success: function(data) {
-            console.log(data)
+        dataType: 'json',
+        success: function(response) {
+            if(response.status){
+                location.reload();
+            }else{
+                alert('Косяк');
+            }
+        }
+    });
+});
+
+$('#saveProductOption').on('click', function() {
+    $.ajax({
+        url: $(this).attr('data-url'),
+        data: $('#updateProductOption input').serialize(),
+        type: 'POST',
+        dataType: 'json',
+        success: function(response) {
+            if(response.status){
+                location.reload();
+            }else{
+                alert('Косяк');
+            }
         }
     });
 });
