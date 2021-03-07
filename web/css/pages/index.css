@@ -1,0 +1,44 @@
+.slidesPanel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: #0f0f0f;
+    color: white;
+    font-size: 16px;
+}
+
+.mainContent{
+    background-color: #f4ebe2;
+}
+.mainTextWrapper{
+    background-image: url("../../images/cocktails2.png");
+    background-position: right 10px center;
+    background-size: 500px;
+    background-repeat: no-repeat;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.mainText{
+    display: flex;
+    max-width: 50%;
+    line-height: 120%;
+    font-size: 35px;
+    text-transform: uppercase;
+}
+
+.button.dark{
+    display: flex;
+    border: 1px solid black;
+    padding: 12px;
+    width: 200px;
+    justify-content: center;
+    transition-duration: .3s;
+    border-radius: 4px;
+}
+.button.dark:hover{
+    color: white;
+    background-color: #0f0f0f;
+}

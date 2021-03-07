@@ -29,34 +29,34 @@ AppAsset::register($this);
 	<div class="container">
 		<div class="header">
 			<div class="logo">
-				Домашний бармен
+				<a href="/">2051</a>
 			</div>
 			<div class="right">
 				<div class="menu">
-					<div class="muneItem">Главная</div>
-					<div class="muneItem">Коктейльная карта</div>
-					<div class="muneItem">Доставка и оплата</div>
-					<div class="muneItem">О нас</div>
+					<a href="/" class="menuItem">Головна</a>
+					<a href="/" class="menuItem">Коктейльна карта</a>
+					<a href="/payment-and-delivery" class="menuItem">Доставка і оплата</a>
+					<a href="/contacts" class="menuItem">Контакти</a>
 				</div>
-				<div class="cart">Корзина</div>
+				<a href="/" class="cart">2</a>
 			</div>
 		</div>
 	</div>
 </header>
 
-<div class="wrap">
-    <div class="container">
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
-</div>
+<?= Alert::widget() ?>
+<?= $content ?>
 
 <footer>
 	<div class="container">
 		<div class="footer">
-			<div class="socials">Мы в соцсетях</div>
-			<div class="feedback">Напишите нам</div>
-			<div class="contacts">+380966218621</div>
+			<div class="socials">Ми у соцмережах</div>
+			<div class="feedback">Напишіть нам</div>
+			<div class="contacts">
+				Київська обл. с. Софіївська Борщагівка
+				<br/>вул. Боголюбова, д. 44
+				<br/>+380966218621
+			</div>
 		</div>
 	</div>
 </footer>

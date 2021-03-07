@@ -2,21 +2,40 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'Домашний бармен. Главная';
+$this->title = '2051 - Доставка коктейлей по Киеву. Главная';
+$this->registerCssFile('@web/css/pages/index.css');
+
 ?>
+
 <div class="slidesPanel">
-	<div class="slideItem">ПОПРОБУЙТЕ НОВЫЕ ВКУСЫ</div>
-	<div class="slideItem">БЕСПЛАТНАЯ ДОСТАВКА ЗАКАЗОВ ОТ 400 РУБ.</div>
-	<div class="slideItem">ЗАКАЖИТЕ 2 КОРОБКИ И СЭКОНОМЬТЕ 20%</div>
+	<div class="slideItem">Безкоштовна доставка замовлень від 700 грн</div>
+	<div class="slideItem">При замовленні від 1000 грн - подаруночок!</div>
+	<div class="slideItem">Спробуйте нові смаки</div>
 </div>
+
 <div class="mainContent">
-	<div class="mainTextWrapper">
-		<div class="mainText">Смешаем, охладим и доставим готовые алкогольные коктейли на любое мероприятие</div>
-		<a href="#">Посмотреть коктейльную карту</a>
+	<div class="wrap">
+		<div class="container">
+			<div class="mainTextWrapper">
+				<div class="mainText">Змішуємо, охолоджуємо та доставляємо алкогольні коктейлі</div>
+				<a href="#" class="button dark">До коктейльної карти</a>
+			</div>
+		</div>
 	</div>
-	<div class="img">
-		<img src="images/cocktails.jpg" alt="" style="width: 400px;">
-	</div>
-	<img src="images/drink.jpg" alt="" style="width: 100%;">
-	
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        $(".slidesPanel > div:gt(0)").hide();
+
+        setInterval(function() {
+            $('.slidesPanel > div:first')
+                .fadeOut(1)
+                .next()
+                .fadeIn(500)
+                .end()
+                .appendTo('.slidesPanel');
+        },  5000);
+    });
+ 
+</script>

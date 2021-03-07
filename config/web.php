@@ -48,6 +48,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+	            '<action:(payment-and-delivery|contacts)>' => 'site/<action>',
             ],
         ],
     ],
