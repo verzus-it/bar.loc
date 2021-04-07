@@ -63,7 +63,7 @@ $this->registerCssFile('@web/css/libs/bootstrap-select.min.css');
 					<h3 class="panel-title"><b>Рецепт:</b></h3>
 				</div>
 				<div class="panel-body">
-
+					<?= $model->getRecipe() ?>
 				</div>
 			</div>
 			
@@ -72,7 +72,7 @@ $this->registerCssFile('@web/css/libs/bootstrap-select.min.css');
 					<h3 class="panel-title"><b>Фото:</b></h3>
 				</div>
 				<div class="panel-body">
-
+					<?= $model->image ? Html::img('@web/'.$model->image, ['style' => ['max-width' => '350px', 'max-height' => '350px'], 'class' => 'center-block']) : ''?>
 				</div>
 			</div>
 			
@@ -165,7 +165,16 @@ $this->registerCssFile('@web/css/libs/bootstrap-select.min.css');
 
 				</table>
 			</div>
-			
+
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><b>Что делать клиенту:</b></h3>
+				</div>
+				<div class="panel-body">
+					<?= $model->getWhatToDo() ?>
+				</div>
+			</div>
 		</div>
 	</div>
 	

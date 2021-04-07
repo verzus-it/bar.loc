@@ -30,8 +30,7 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['price'], 'number'],
-            [['description', 'optionTitle'], 'string'],
+            [['description', 'recipe', 'whatToDo'], 'string'],
             [['title', 'productCategory'], 'string', 'max' => 50],
         ];
     }
@@ -46,11 +45,22 @@ class Product extends \yii\db\ActiveRecord
             'title' => 'Название',
             'description' => 'Описание',
             'productCategory' => 'Тип товара',
+            'whatToDo' => 'Что нужно делать клиенту',
+            'image' => 'Фото',
+            'recipe' => 'Рецепт',
         ];
     }
 	
 	public function getDescription(){
     	return trim($this->description) ?: ' - ';
+    }
+	
+	public function getRecipe(){
+    	return trim($this->recipe) ?: ' - ';
+    }
+	
+	public function getWhatToDo(){
+    	return trim($this->whatToDo) ?: ' - ';
     }
     
     public function getCostPrice(){

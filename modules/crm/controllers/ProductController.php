@@ -12,6 +12,7 @@ use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -106,12 +107,16 @@ class ProductController extends Controller
     public function actionUpdate($id)
     {
 	    $model = $id ? $this->findModel($id) : new Product();
-		if(Yii::$app->request->isPost){
-		
+		if(Yii::$app->request->post() && $model->load(Yii::$app->request->post())){
+			$uploadedImage = UploadedFile::getInstance($model, 'image');
+			if($uploadedImage){
+				$uploadedImage->saveAs('uploads/products/' . $uploadedImage->baseName . '.' . $uploadedImage->extension);
+				$model->image = 'uploads/products/' . $uploadedImage->baseName . '.' . $uploadedImage->extension;
+			}
+			if($model->save()){
+				return $this->redirect(['view', 'id' => $model->id]);
+			}
 		}
-	    if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
 
         return $this->render('update', [
             'model' => $model,

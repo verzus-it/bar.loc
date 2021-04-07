@@ -15,15 +15,17 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'productCategory')->dropDownList([
-    		'coctail' => 'Коктейль',
-			'other' => 'Другое'
+	
+	<?= $form->field($model, 'recipe')->textarea(['rows' => 6]) ?>
+	
+	<?= $form->field($model, 'whatToDo')->textarea(['rows' => 6]) ?>
+	
+	<?= $form->field($model, 'image')->fileInput() ?>
+	
+	<?= $form->field($model, 'productCategory')->dropDownList([
+		'coctail' => 'Коктейль',
+		'other' => 'Другое'
 	]) ?>
-	
-	<?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
-	
-	<?= $form->field($model, 'optionTitle')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

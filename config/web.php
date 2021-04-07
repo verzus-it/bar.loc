@@ -5,7 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
-	'name' => 'Remote bar',
+	'name' => '2051',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [

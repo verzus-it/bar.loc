@@ -20,9 +20,9 @@ use yii\widgets\ActiveForm;
 	
 	<?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'visible')->checkbox() ?>
+    <?= $form->field($model, 'visible')->checkbox(['checked ' => true]) ?>
 
-    <?= $form->field($model, 'active')->checkbox() ?>
+    <?= $form->field($model, 'active')->checkbox(['checked ' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

@@ -38,7 +38,7 @@ AppAsset::register($this);
 					<a href="/payment-and-delivery" class="menuItem">Доставка і оплата</a>
 					<a href="/contacts" class="menuItem">Контакти</a>
 				</div>
-				<a href="/" class="cart">2</a>
+				<a href="/" class="cart">0</a>
 			</div>
 		</div>
 	</div>
@@ -54,7 +54,7 @@ AppAsset::register($this);
 			<div class="feedback">Напишіть нам</div>
 			<div class="contacts">
 				Київська обл. с. Софіївська Борщагівка
-				<br/>вул. Боголюбова, д. 44
+				<br/>вул. Боголюбова
 				<br/>+380966218621
 			</div>
 		</div>

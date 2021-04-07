@@ -27,8 +27,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             'id',
             'title',
-            'price',
+	        [
+		        'attribute' => 'image',
+		        'format' => 'html',
+		        'value' => function($data){
+			        return $data->image ? Html::img('@web/'.$data->image, ['style' => ['max-width' => '150px', 'max-height' => '150px'], 'class' => 'center-block']) : '';
+		        }
+	        ],
             'description:ntext',
+            'recipe:ntext',
+            'whatToDo:ntext',
             'productCategory',
             ['class' => 'yii\grid\ActionColumn'],
         ],
