@@ -50,11 +50,16 @@ AppAsset::register($this);
 <footer>
 	<div class="container">
 		<div class="footer">
-			<div class="socials">Ми у соцмережах</div>
-			<div class="feedback">Напишіть нам</div>
+			<div class="socials">
+				<div class="title">
+					Ми у соцмережах:
+				</div>
+				<div>
+					<a href="https://www.instagram.com/2051.kyiv.ua/" target="_blank"><img src="../images/icons/instagram.svg" alt="Instagram"></a>
+				</div>
+			</div>
 			<div class="contacts">
 				Київська обл. с. Софіївська Борщагівка
-				<br/>вул. Боголюбова
 				<br/>+380966218621
 			</div>
 		</div>

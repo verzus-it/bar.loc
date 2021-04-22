@@ -157,6 +157,28 @@ a.desc:after {
     align-items: center;
 }
 
+.footer .socials{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.footer .socials .title{
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.footer .socials img{
+    width: 20px;
+    height: 20px;
+}
+
+.contacts{
+    display: flex;
+    align-self: center;
+    text-align: center;
+    font-weight: bold;
+}
+
 .content{
     border: 5px solid #f4ebe2;
     padding: 15px;
