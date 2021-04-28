@@ -5,6 +5,11 @@
 $this->title = '2051 - Доставка коктейлей по Киеву. Главная';
 $this->registerCssFile('@web/css/pages/index.css');
 
+//\yii\helpers\VarDumper::dump($products, 10, 1);
+foreach($products as $product){
+	//\yii\helpers\VarDumper::dump($product->options, 10, 1);
+}
+
 ?>
 
 <div class="slidesPanel">
@@ -26,137 +31,53 @@ $this->registerCssFile('@web/css/pages/index.css');
 
 <div class="wrap">
 	<div class="container">
-		<div class="bestSellers">
+		<div class="bestSellers" id="cocktailMenu">
 			
 			<div class="bestSellersHead">
-				Топ продажу
+				Коктейльна карта
 			</div>
 			
-			<div class="bestSellerItem">
-				<img src="images/products/1.jpg" class="productImg" alt="">
-				<div class="title">
-					Long Island Ice Tea
-				</div>
-				<div class="description">
-					Солодкий ягідний твіст на класичну Маргариту. Готуємо зі свіжої полуниці, лаймового фрешу та текіли.
-				</div>
-				<select name="option" class="optionsList">
-					<option value="1">100 мл</option>
-					<option value="2">700 мл</option>
-				</select>
-				<div class="price">120 грн</div>
-				<a href="#" class="button dark">Замовити</a>
+			<?if($products){?>
+				<? foreach($products as $product){?>
+					<div class="bestSellerItem">
+						<div>
+							<img src="<?= file_exists($product->image) ? $product->image : 'uploads/products/golubaja_loguna_logo-850x639.jpg'?>" class="productImg" alt="">
+							<div class="title">
+								<?= $product->title ?>
+							</div>
+							<div class="description">
+								<?= $product->description ?>
+							</div>
+						</div>
+						<div>
+							<div class="price"><span><?=$product->options[0]->price?></span> грн.</div>
+							<div class="bottomPart">
+								<select name="option" class="optionsList">
+									<?if($product->options){?>
+										<? foreach($product->options as $option){?>
+											<option value="<?=$option->id?>" data-price="<?=$option->price?>"><?=$option->title?></option>
+										<?}?>
+									<?}?>
+								</select>
+								<a href="#" class="button dark">Замовити</a>
+							</div>
+							
+						</div>
+						
+					</div>
+				<?}?>
+			<?}?>
+			
+			
+			
+		</div>
+		
+		<div id="paymentAndDelivery">
+			<div class="payment">
+			
 			</div>
-			<div class="bestSellerItem">
-
-				<img src="images/products/2.jpg" class="productImg" alt="">
-				<div class="title">
-					Cosmopolitan
-				</div>
-				<div class="description">
-					Солодкий ягідний твіст на класичну Маргариту. Готуємо зі свіжої полуниці, лаймового фрешу та текіли.
-				</div>
-				<select name="option" class="optionsList">
-					<option value="1">100 мл</option>
-					<option value="2">700 мл</option>
-				</select>
-				<div class="price">130 грн</div>
-				<a href="#" class="button dark">Замовити</a>
-			</div>
-			<div class="bestSellerItem">
-
-				<img src="images/products/3.jpg" class="productImg" alt="">
-				<div class="title">
-					Tequila Sunrise
-				</div>
-				<div class="description">
-					Солодкий ягідний твіст на класичну Маргариту. Готуємо зі свіжої полуниці, лаймового фрешу та текіли.
-				</div>
-				<select name="option" class="optionsList">
-					<option value="1">100 мл</option>
-					<option value="2">700 мл</option>
-				</select>
-				<div class="price">120 грн</div>
-				<a href="#" class="button dark">Замовити</a>
-			</div>
-			<div class="bestSellerItem">
-
-				<img src="images/products/1.jpg" class="productImg" alt="">
-				<div class="title">
-					Long Island Ice Tea
-				</div>
-				<div class="description">
-					Солодкий ягідний твіст на класичну Маргариту. Готуємо зі свіжої полуниці, лаймового фрешу та текіли.
-				</div>
-				<select name="option" class="optionsList">
-					<option value="1">100 мл</option>
-					<option value="2">700 мл</option>
-				</select>
-				<div class="price">120 грн</div>
-				<a href="#" class="button dark">Замовити</a>
-			</div>
-			<div class="bestSellerItem">
-				<img src="images/products/1.jpg" class="productImg" alt="">
-				<div class="title">
-					Long Island Ice Tea
-				</div>
-				<div class="description">
-					Солодкий ягідний твіст на класичну Маргариту. Готуємо зі свіжої полуниці, лаймового фрешу та текіли.
-				</div>
-				<select name="option" class="optionsList">
-					<option value="1">100 мл</option>
-					<option value="2">700 мл</option>
-				</select>
-				<div class="price">120 грн</div>
-				<a href="#" class="button dark">Замовити</a>
-			</div>
-			<div class="bestSellerItem">
-
-				<img src="images/products/2.jpg" class="productImg" alt="">
-				<div class="title">
-					Cosmopolitan
-				</div>
-				<div class="description">
-					Солодкий ягідний твіст на класичну Маргариту. Готуємо зі свіжої полуниці, лаймового фрешу та текіли.
-				</div>
-				<select name="option" class="optionsList">
-					<option value="1">100 мл</option>
-					<option value="2">700 мл</option>
-				</select>
-				<div class="price">130 грн</div>
-				<a href="#" class="button dark">Замовити</a>
-			</div>
-			<div class="bestSellerItem">
-
-				<img src="images/products/3.jpg" class="productImg" alt="">
-				<div class="title">
-					Tequila Sunrise
-				</div>
-				<div class="description">
-					Солодкий ягідний твіст на класичну Маргариту. Готуємо зі свіжої полуниці, лаймового фрешу та текіли.
-				</div>
-				<select name="option" class="optionsList">
-					<option value="1">100 мл</option>
-					<option value="2">700 мл</option>
-				</select>
-				<div class="price">120 грн</div>
-				<a href="#" class="button dark">Замовити</a>
-			</div>
-			<div class="bestSellerItem">
-
-				<img src="images/products/1.jpg" class="productImg" alt="">
-				<div class="title">
-					Long Island Ice Tea
-				</div>
-				<div class="description">
-					Солодкий ягідний твіст на класичну Маргариту. Готуємо зі свіжої полуниці, лаймового фрешу та текіли.
-				</div>
-				<select name="option" class="optionsList">
-					<option value="1">100 мл</option>
-					<option value="2">700 мл</option>
-				</select>
-				<div class="price">120 грн</div>
-				<a href="#" class="button dark">Замовити</a>
+			<div class="delivery">
+				
 			</div>
 		</div>
 	</div>
@@ -174,6 +95,11 @@ $this->registerCssFile('@web/css/pages/index.css');
                 .end()
                 .appendTo('.slidesPanel');
         },  5000);
+        
+        $('.optionsList').change(function (e) {
+			var price = $(e.target).find(':selected').data('price');
+            $(e.target).parents('.bestSellerItem').find('.price span').text(price);
+        })
     });
  
 </script>

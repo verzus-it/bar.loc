@@ -34,9 +34,9 @@ AppAsset::register($this);
 			<div class="right">
 				<div class="menu">
 					<a href="/" class="menuItem">Головна</a>
-					<a href="/" class="menuItem">Коктейльна карта</a>
-					<a href="/payment-and-delivery" class="menuItem">Доставка і оплата</a>
-					<a href="/contacts" class="menuItem">Контакти</a>
+					<a href="#cocktailMenu" class="menuItem">Коктейльна карта</a>
+					<a href="#paymentAndDelivery" class="menuItem">Доставка і оплата</a>
+					<a href="#contacts" class="menuItem">Контакти</a>
 				</div>
 				<a href="/" class="cart">0</a>
 			</div>
@@ -48,7 +48,7 @@ AppAsset::register($this);
 <?= $content ?>
 
 <footer>
-	<div class="container">
+	<div class="container" id="contacts">
 		<div class="footer">
 			<div class="socials">
 				<div class="title">
