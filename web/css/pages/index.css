@@ -36,6 +36,7 @@
     justify-content: center;
     transition-duration: .3s;
     border-radius: 4px;
+    background-color: transparent;
 }
 .button.dark{
     border: 1px solid black;

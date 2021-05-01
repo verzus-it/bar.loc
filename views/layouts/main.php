@@ -38,7 +38,7 @@ AppAsset::register($this);
 					<a href="#paymentAndDelivery" class="menuItem">Доставка і оплата</a>
 					<a href="#contacts" class="menuItem">Контакти</a>
 				</div>
-				<a href="/" class="cart">0</a>
+				<a href="/" class="cart"><?=array_sum($_SESSION['cart'])?></a>
 			</div>
 		</div>
 	</div>

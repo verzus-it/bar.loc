@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = '2051 - Доставка коктейлей по Киеву. Главная';
+use yii\helpers\Url;$this->title = '2051 - Доставка коктейлей по Киеву. Главная';
 $this->registerCssFile('@web/css/pages/index.css');
 
 //\yii\helpers\VarDumper::dump($products, 10, 1);
@@ -59,7 +59,7 @@ foreach($products as $product){
 										<?}?>
 									<?}?>
 								</select>
-								<a href="#" class="button dark">Замовити</a>
+								<a href="javascript:void(0)" class="button dark addToCart">Замовити</a>
 							</div>
 							
 						</div>
@@ -99,7 +99,51 @@ foreach($products as $product){
         $('.optionsList').change(function (e) {
 			var price = $(e.target).find(':selected').data('price');
             $(e.target).parents('.bestSellerItem').find('.price span').text(price);
-        })
+        });
+        
+		$('.addToCart').click(function (e) {
+		    e.preventDefault();
+			var optionID = $(e.target).parents('.bestSellerItem').find('select option:selected').val();
+			if(optionID){
+                $.ajax({
+                    url: "<?= Url::toRoute(['site/change-cart'])?>",
+                    data: {optionID: optionID, qty: 1},
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function(response) {
+                        if(response.status){
+                        
+                        }else{
+                            console.warn('Невалидный ответ');
+                        }
+                    }
+                });
+			}else{
+			    console.warn('Не выбрана опция');
+			}
+        });
     });
  
 </script>
+
+<div class="modal opened">
+	<div class="modalBody">
+		<span class="modalClose" onclick="$('.modal').removeClass('opened')"></span>
+		<div class="modalContent">
+			<div class="cartTitle">Ваше замовлення:</div>
+			<div class="cartItems">
+				<div class="cartItem">
+					<div class="image"></div>
+					<div class="title"></div>
+					<div class="qty"></div>
+					<div class="price"></div>
+					<div class="amount"></div>
+				</div>
+			</div>
+			<div class="cartTotal">
+				<div class="amount"></div>
+			</div>
+			<button class="button dark">Оформити замовлення</button>
+		</div>
+	</div>
+</div>

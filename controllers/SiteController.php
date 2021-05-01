@@ -119,4 +119,21 @@ class SiteController extends Controller
     {
         return $this->render('paymentAndDelivery');
     }
+    
+    public function actionChangeCart(){
+	    $optionID = (int)Yii::$app->request->post()['optionID'];
+	    $qty = (int)Yii::$app->request->post()['qty'];
+	
+	    if(!$_SESSION['cart'][$optionID]){
+		    $_SESSION['cart'][$optionID] = 0;
+	    }
+	    
+	    $_SESSION['cart'][$optionID] = max((int)$_SESSION['cart'][$optionID] + $qty, 0);
+	    
+	    if($_SESSION['cart'][$optionID] <= 0){
+	    	unset($_SESSION['cart'][$optionID]);
+	    }
+	    
+	    return json_encode(['status' => true]);
+    }
 }
