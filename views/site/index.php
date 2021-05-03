@@ -133,15 +133,48 @@ foreach($products as $product){
 			<div class="cartTitle">Ваше замовлення:</div>
 			<div class="cartItems">
 				<div class="cartItem">
-					<div class="image"></div>
-					<div class="title"></div>
-					<div class="qty"></div>
-					<div class="price"></div>
-					<div class="amount"></div>
+					<div class="image"><img src="http://bar.loc/uploads/products/Something-Tasty.jpg" alt="" /></div>
+					<div class="title">
+						Щось смачненьке/Something Tasty<br/><small>200 мл.</small>
+					</div>
+					<div class="price">140 грн</div>
+					<div class="qty">2 шт.</div>
+					<div class="amount">280 грн</div>
+				</div>
+				<div class="cartItem">
+					<div class="image"><img src="http://bar.loc/uploads/products/1.jpg" alt=""></div>
+					<div class="title">
+						Лонг Айленд / Long Island<br/><small>150 мл. + Coca Cola</small>
+					</div>
+					<div class="price">140 грн</div>
+					<div class="qty">2 шт.</div>
+					<div class="amount">280 грн</div>
 				</div>
 			</div>
 			<div class="cartTotal">
-				<div class="amount"></div>
+				<div class="amount">До сплати: 560 грн.</div>
+			</div>
+			<div class="orderData">
+				<div class="inputLine">
+					<div class="formLabel">Ім'я</div>
+					<input type="text" value="" placeholder="Ім'я">
+				</div>
+				<div class="inputLine">
+					<div class="formLabel">Телефон</div>
+					<input type="text" value="" placeholder="+380">
+				</div>
+				<div class="inputLine">
+					<div class="formLabel">Адреса доставки</div>
+					<input type="text" value="" placeholder="">
+				</div>
+				<div class="inputLine">
+					<div class="formLabel">Час доставки</div>
+					<input type="text" value="" placeholder="">
+				</div>
+				<div class="inputLine ">
+					<div class="formLabel">Коментар</div>
+					<textarea name="comment" id="" rows="5"></textarea>
+				</div>
 			</div>
 			<button class="button dark">Оформити замовлення</button>
 		</div>

@@ -11,6 +11,8 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
+
+$cartProductQty = is_array($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -38,7 +40,7 @@ AppAsset::register($this);
 					<a href="#paymentAndDelivery" class="menuItem">Доставка і оплата</a>
 					<a href="#contacts" class="menuItem">Контакти</a>
 				</div>
-				<a href="/" class="cart"><?=array_sum($_SESSION['cart'])?></a>
+				<a href="/" class="cart"><?=$cartProductQty?></a>
 			</div>
 		</div>
 	</div>

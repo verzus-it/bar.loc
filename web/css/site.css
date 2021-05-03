@@ -234,3 +234,88 @@ a.desc:after {
 .modal .modalBody .modalContent {
     display: inherit;
 }
+
+.cartTitle{
+    font-size: 22px;
+    font-weight: bold;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 2px solid black;
+}
+.cartItems{
+    display: flex;
+    flex-direction: column;
+}
+.cartItem{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px dotted;
+    padding: 10px 0;
+}
+.cartItem:last-of-type{
+    border-bottom: none;
+}
+.cartItem > .image{
+    width: 60px;
+}
+.cartItem > .image > img{
+    max-width: 50px;
+}
+.cartItem > .title{
+    width: 250px;
+}
+.cartItem > .qty{
+    width: 50px;
+    text-align: center;
+}
+.cartItem > .price{
+    width: 75px;
+    font-weight: bold;
+    text-align: center;
+}
+.cartItem > .amount{
+    width: 85px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.cartTotal{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 18px;
+    font-weight: bold;
+    border-top: 2px solid black;
+    margin-top: 5px;
+    padding-top: 15px;
+}
+
+.orderData{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0px -8px;
+    flex-flow: row wrap;
+}
+.orderData .inputLine{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: calc(100% / 2 - 16px);
+    margin: 0px 8px;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.orderData .inputLine .formLabel {
+    font-size: 16px;
+    font-weight: bold;
+}
+.orderData .inputLine input, .orderData .inputLine textarea {
+    display: flex;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 8px 5px;
+}
