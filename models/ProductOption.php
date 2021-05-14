@@ -48,4 +48,10 @@ class ProductOption extends \yii\db\ActiveRecord
             'active' => 'Active',
         ];
     }
+	
+	
+	public function getProduct()
+	{
+		return $this->hasOne(Product::className(), ['id' => 'productID']);
+	}
 }

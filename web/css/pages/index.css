@@ -24,7 +24,7 @@
 .mainText{
     display: flex;
     max-width: 50%;
-    line-height: 120%;
+    line-height: 170%;
     font-size: 35px;
     text-transform: uppercase;
 }
@@ -43,6 +43,10 @@
 }
 .button.dark:hover{
     color: white;
+    background-color: #0f0f0f;
+}
+.button.dark:focus{
+    color: white!important;
     background-color: #0f0f0f;
 }
 

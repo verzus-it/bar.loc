@@ -2,9 +2,13 @@
 
 namespace app\controllers;
 
+use app\models\Order;
+use app\models\OrderDetail;
 use app\models\Product;
+use app\models\ProductOption;
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
@@ -63,7 +67,21 @@ class SiteController extends Controller
     public function actionIndex()
     {
 	    $products = Product::find()->all();
-        return $this->render('index', ['products' => $products]);
+	    
+	    $cart = ['products' => [], 'totalAmount' => 0];
+	    if($_SESSION['cart']){
+		    foreach($_SESSION['cart'] as $optionID => $qty){
+			    $productOption = ProductOption::findOne($optionID);
+			    $cart['products'][$optionID]['data'] = $productOption;
+			    $cart['products'][$optionID]['qty'] = $qty;
+			    $cart['products'][$optionID]['amount'] = $qty * $productOption->price;
+			    $cart['totalAmount'] += $qty * $productOption->price;
+	    	}
+	    }
+        return $this->render('index', [
+        	'products' => $products,
+	        'cart' => $cart
+        ]);
     }
 
     /**
@@ -110,11 +128,6 @@ class SiteController extends Controller
         return $this->render('contacts');
     }
 
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
     public function actionPaymentAndDelivery()
     {
         return $this->render('paymentAndDelivery');
@@ -135,5 +148,38 @@ class SiteController extends Controller
 	    }
 	    
 	    return json_encode(['status' => true]);
+    }
+    
+    public function actionConfirmOrder(){
+    	//На этапе проверки спроса просто отправляем заказ на почту нам и все
+    	if($_SESSION['cart'] && array_sum($_SESSION['cart']) > 0){
+    		
+		    $customer = Yii::$app->request->post();
+			
+		    if(!$customer['phone']){
+			    return json_encode(['status' => false, 'data' => ['message' => 'Вкажіть телефон для зв\'язку!']], JSON_UNESCAPED_UNICODE);
+		    }
+		    
+		    foreach($_SESSION['cart'] as $optionID => $qty){
+			    $productOption = ProductOption::findOne($optionID);
+			    $cart['products'][$optionID]['data'] = $productOption;
+			    $cart['products'][$optionID]['qty'] = $qty;
+			    $cart['products'][$optionID]['amount'] = $qty * $productOption->price;
+			    $cart['totalAmount'] += $qty * $productOption->price;
+		    }
+		    
+		    unset($_SESSION['cart']);
+		    
+			Yii::$app->mailer->compose('newOrderToOwner', ['cart' => $cart, 'customer' => $customer])
+				->setFrom(['info@2051.kyiv.ua' => '2051. Доставка коктейлів'])
+				->setTo('s.sulacov@gmail.com')
+				->setSubject('Нове замовлення')
+				->send();
+		    
+		    return json_encode(['status' => true, 'html' => $this->renderAjax('confirmOrder')], JSON_UNESCAPED_UNICODE);
+		    
+	    }else{
+    	    return json_encode(['status' => false, 'data' => ['message' => 'Пусте замовлення. Додайте улюбленні коктейлі та підтвердіть замовлення']], JSON_UNESCAPED_UNICODE);
+	    }
     }
 }

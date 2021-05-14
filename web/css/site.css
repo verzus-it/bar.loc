@@ -253,7 +253,7 @@ a.desc:after {
     padding: 10px 0;
 }
 .cartItem:last-of-type{
-    border-bottom: none;
+    /*border-bottom: none;*/
 }
 .cartItem > .image{
     width: 60px;
@@ -284,15 +284,22 @@ a.desc:after {
     justify-content: flex-end;
     font-size: 18px;
     font-weight: bold;
-    border-top: 2px solid black;
+    margin-bottom: 10px;
     margin-top: 5px;
-    padding-top: 15px;
+    padding-top: 5px;
+    padding-bottom: 10px;
 }
 
+.orderDataTitle{
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid black;
+}
 .orderData{
     display: flex;
     flex-direction: row;
-    width: 100%;
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 0px -8px;
@@ -307,7 +314,10 @@ a.desc:after {
     flex-direction: column;
     margin-bottom: 15px;
 }
-
+.confirmOrderButtonWrapper{
+    display: flex;
+    justify-content: flex-end;
+}
 .orderData .inputLine .formLabel {
     font-size: 16px;
     font-weight: bold;
@@ -318,4 +328,37 @@ a.desc:after {
     border: 1px solid black;
     border-radius: 4px;
     padding: 8px 5px;
+}
+.changeOptionsQtyWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.changeOptionQtyButton{
+    width: 18px;
+    padding: 2px 5px;
+    line-height: 100%;
+    font-size: 13px;
+}
+
+.successWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 400px;
+}
+.successWrapper > .successText{
+    display: flex;
+    font-size: 20px;
+    color: #009688;
+    font-weight: bold;
+}
+.successWrapper > img{
+    display: flex;
+    width: 200px;
+}
+
+#paymentAndDelivery{
+    display: flex;
 }

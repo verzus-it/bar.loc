@@ -63,6 +63,10 @@ class Product extends \yii\db\ActiveRecord
     	return trim($this->whatToDo) ?: ' - ';
     }
     
+    public function getImage(){
+        return file_exists($this->image) ? $this->image : 'uploads/products/golubaja_loguna_logo-850x639.jpg';
+    }
+    
     public function getCostPrice(){
     	$costPrice = 0;
     	if($this->composition){

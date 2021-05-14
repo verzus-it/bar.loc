@@ -4,11 +4,10 @@
 
 use yii\helpers\Url;$this->title = '2051 - Доставка коктейлей по Киеву. Главная';
 $this->registerCssFile('@web/css/pages/index.css');
+$this->registerCssFile('@web/css/libs/jquery.toast.css');
+$this->registerJsFile('@web/js/libs/jquery.toast.js', ['depends' => 'yii\web\JqueryAsset', 'position' => $this::POS_END]);
+$this->registerJsFile('@web/js/libs/jquery.maskedinput.min.js', ['depends' => 'yii\web\JqueryAsset', 'position' => $this::POS_END]);
 
-//\yii\helpers\VarDumper::dump($products, 10, 1);
-foreach($products as $product){
-	//\yii\helpers\VarDumper::dump($product->options, 10, 1);
-}
 
 ?>
 
@@ -23,7 +22,7 @@ foreach($products as $product){
 		<div class="container">
 			<div class="mainTextWrapper">
 				<div class="mainText">Змішуємо, охолоджуємо та доставляємо алкогольні коктейлі</div>
-				<a href="#" class="button dark">До коктейльної карти</a>
+<!--				<a href="#" class="button dark">До коктейльної карти</a>-->
 			</div>
 		</div>
 	</div>
@@ -41,7 +40,7 @@ foreach($products as $product){
 				<? foreach($products as $product){?>
 					<div class="bestSellerItem">
 						<div>
-							<img src="<?= file_exists($product->image) ? $product->image : 'uploads/products/golubaja_loguna_logo-850x639.jpg'?>" class="productImg" alt="">
+							<img src="<?= $product->getImage() ?>" class="productImg" alt="">
 							<div class="title">
 								<?= $product->title ?>
 							</div>
@@ -74,10 +73,10 @@ foreach($products as $product){
 		
 		<div id="paymentAndDelivery">
 			<div class="payment">
-			
+				Оплата
 			</div>
 			<div class="delivery">
-				
+				Доставка
 			</div>
 		</div>
 	</div>
@@ -104,79 +103,129 @@ foreach($products as $product){
 		$('.addToCart').click(function (e) {
 		    e.preventDefault();
 			var optionID = $(e.target).parents('.bestSellerItem').find('select option:selected').val();
-			if(optionID){
-                $.ajax({
-                    url: "<?= Url::toRoute(['site/change-cart'])?>",
-                    data: {optionID: optionID, qty: 1},
-                    type: 'POST',
-                    dataType: 'json',
-                    success: function(response) {
-                        if(response.status){
-                        
-                        }else{
-                            console.warn('Невалидный ответ');
-                        }
-                    }
-                });
-			}else{
-			    console.warn('Не выбрана опция');
-			}
+
+            changeOptionQty(optionID, 1);
         });
+		$(document).on('click', '.changeOptionQtyButton', function (e) {
+            e.preventDefault();
+            var optionID = $(e.target).parents('.cartItem').data('id');
+            var qty = $(e.target).data('qty');
+
+            changeOptionQty(optionID, qty)
+        })
+		
+		$(document).on('click', '.confirmOrderButton', function (e) {
+            $.ajax({
+                url: "<?= Url::toRoute(['site/confirm-order'])?>",
+                data: $('.orderData').find('input, textarea').serialize(),
+                type: 'POST',
+                dataType: 'json',
+                success: function(response) {
+                    if(response.status){
+                        $('.modalContent').html(response.html);
+					}else{
+                        $.toast({
+                            text : response.data ? response.data.message : 'Щось не так. Оновіть сторінку та спробуйте ще раз',
+                            icon: 'warning'
+                        })
+					}
+                }
+            });
+        })
+
+        $("#phone").mask("+38 (099) 999 99 99");
     });
- 
+
+    function changeOptionQty(optionID, qty){
+        if(optionID){
+            $.ajax({
+                url: "<?= Url::toRoute(['site/change-cart'])?>",
+                data: {optionID: optionID, qty: qty},
+                type: 'POST',
+                dataType: 'json',
+                success: function(response) {
+                    if(response.status){
+                        $.toast({
+                            text : qty > 0 ? "Коктейль доданий у замовлення" : "Кількість змінена"
+                        })
+                        $(".modalContent").load(location.href+" .modalContent>*", function (){
+                            $("#phone").mask("+38 (099) 999 99 99");
+						});
+                        $(".right").load(location.href+" .right>*","");
+                    }else{
+                        console.warn('Невалидный ответ');
+                    }
+                }
+            });
+        }else{
+            console.warn('Не выбрана опция');
+        }
+	}
+
 </script>
 
 <div class="modal opened">
 	<div class="modalBody">
 		<span class="modalClose" onclick="$('.modal').removeClass('opened')"></span>
 		<div class="modalContent">
+
 			<div class="cartTitle">Ваше замовлення:</div>
 			<div class="cartItems">
-				<div class="cartItem">
-					<div class="image"><img src="http://bar.loc/uploads/products/Something-Tasty.jpg" alt="" /></div>
-					<div class="title">
-						Щось смачненьке/Something Tasty<br/><small>200 мл.</small>
+				<?if($cart['products']){?>
+					<? foreach($cart['products'] as $productOption){?>
+						<div class="cartItem" data-id="<?=$productOption['data']->id?>">
+							<div class="image"><img src="<?= $productOption['data']->product->getImage() ?>" alt="" /></div>
+							<div class="title">
+								<?=$productOption['data']->product->title?><br/>
+								<small><?=$productOption['data']->title?></small>
+							</div>
+							<div class="price"><?=(float)$productOption['data']->price?> грн</div>
+							<div class="qty">
+								<div class="changeOptionsQtyWrapper"><button class="button dark changeOptionQtyButton" data-qty="1">+</button></div>
+								<?=$productOption['qty']?>
+								<div class="changeOptionsQtyWrapper"><button class="button dark changeOptionQtyButton" data-qty="-1">-</button></div>
+							</div>
+							<div class="amount"><?=$productOption['amount']?> грн</div>
+						</div>
+					<?}?>
+				<?}else{?>
+					<div class="cartItem">
+						Замовлення порожнє. Додайте улюбленні коктейлі!
 					</div>
-					<div class="price">140 грн</div>
-					<div class="qty">2 шт.</div>
-					<div class="amount">280 грн</div>
-				</div>
-				<div class="cartItem">
-					<div class="image"><img src="http://bar.loc/uploads/products/1.jpg" alt=""></div>
-					<div class="title">
-						Лонг Айленд / Long Island<br/><small>150 мл. + Coca Cola</small>
-					</div>
-					<div class="price">140 грн</div>
-					<div class="qty">2 шт.</div>
-					<div class="amount">280 грн</div>
-				</div>
+				<?}?>
 			</div>
 			<div class="cartTotal">
-				<div class="amount">До сплати: 560 грн.</div>
+				<div class="amount">До сплати: <?=$cart['totalAmount']?> грн.</div>
 			</div>
-			<div class="orderData">
-				<div class="inputLine">
-					<div class="formLabel">Ім'я</div>
-					<input type="text" value="" placeholder="Ім'я">
+			<?if($cart['products']){?>
+				<div class="orderDataTitle">Контактні дані</div>
+				<div class="orderData">
+					<div class="inputLine">
+						<div class="formLabel">Ім'я</div>
+						<input type="text" value="" name="name">
+					</div>
+					<div class="inputLine">
+						<div class="formLabel">* Телефон</div>
+						<input type="text" id="phone" name="phone" value="">
+					</div>
+					<div class="inputLine">
+						<div class="formLabel">Адреса доставки</div>
+						<input type="text" value="" name="deliveryAddress" placeholder="">
+					</div>
+					<div class="inputLine">
+						<div class="formLabel">Дата та час доставки</div>
+						<input type="text" value="" name="deliveryDateAndTime" placeholder="">
+					</div>
+					<div class="inputLine" style="width: 100%;">
+						<div class="formLabel">Коментар</div>
+						<textarea name="comment" id="" rows="4" style="resize: none;"></textarea>
+					</div>
 				</div>
-				<div class="inputLine">
-					<div class="formLabel">Телефон</div>
-					<input type="text" value="" placeholder="+380">
+				<div class="confirmOrderButtonWrapper">
+					<button class="button dark confirmOrderButton">Оформити замовлення</button>
 				</div>
-				<div class="inputLine">
-					<div class="formLabel">Адреса доставки</div>
-					<input type="text" value="" placeholder="">
-				</div>
-				<div class="inputLine">
-					<div class="formLabel">Час доставки</div>
-					<input type="text" value="" placeholder="">
-				</div>
-				<div class="inputLine ">
-					<div class="formLabel">Коментар</div>
-					<textarea name="comment" id="" rows="5"></textarea>
-				</div>
-			</div>
-			<button class="button dark">Оформити замовлення</button>
+			<?}?>
+			
 		</div>
 	</div>
 </div>
