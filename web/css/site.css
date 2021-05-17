@@ -155,6 +155,7 @@ a.desc:after {
     min-height: 80px;
     justify-content: space-around;
     align-items: center;
+    padding: 20px 0px;
 }
 
 .footer .socials{
@@ -361,4 +362,27 @@ a.desc:after {
 
 #paymentAndDelivery{
     display: flex;
+}
+
+#paymentAndDelivery > div{
+    display: flex;
+    width: 50%;
+    height: 400px;
+    flex-direction: column;
+    padding: 30px;
+}
+#paymentAndDelivery > div > .title{
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+#paymentAndDelivery > div > .text{
+    font-size: 20px;
+}
+
+.payment{
+    background-color: #f4ebe2;
+}
+.delivery{
+    background-color: #f2d5ce;
 }

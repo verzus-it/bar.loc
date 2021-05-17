@@ -73,10 +73,24 @@ $this->registerJsFile('@web/js/libs/jquery.maskedinput.min.js', ['depends' => 'y
 		
 		<div id="paymentAndDelivery">
 			<div class="payment">
-				Оплата
+				<div class="title">
+					Оплата
+				</div>
+				<div class="text">
+					<p>Оплата здійснюється на карту ПриватБанку або Монобанку.</p>
+					<p>Також можлива оплата на рахунок ФОП</p>
+					<p>Оплата здійснюється до приготування коктейлів</p>
+				</div>
 			</div>
 			<div class="delivery">
-				Доставка
+				<div class="title">
+					Доставка
+				</div>
+				<div class="text">
+					<p>Приготування коктейлів відбувається безпосередньо перед відправленням.</p>
+					<p>Доставка відбувається мінімум за годину з часу оформлення замовлення</p>
+					<p>Доставка по Софіївськії Борщагівці та Вишневому безкоштовна. По Києву та передмістю - за тарифами таксі.</p>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -164,7 +178,7 @@ $this->registerJsFile('@web/js/libs/jquery.maskedinput.min.js', ['depends' => 'y
 
 </script>
 
-<div class="modal opened">
+<div class="modal">
 	<div class="modalBody">
 		<span class="modalClose" onclick="$('.modal').removeClass('opened')"></span>
 		<div class="modalContent">

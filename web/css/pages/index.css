@@ -60,9 +60,10 @@
     width: 100%;
     flex-shrink: 0;
     flex-grow: 1;
-    font-size: 24px;
+    font-size: 28px;
     justify-content: center;
     margin: 32px 0px 16px 0px;
+    font-weight: bold;
 }
 
 .bestSellers .bestSellerItem{
