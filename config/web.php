@@ -16,6 +16,7 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'GqPju7Kv52ghCF7ehIB2AZ0lt27wA6AE',
+			'baseUrl' => ''
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -61,6 +62,11 @@ $config = [
             'showScriptName' => false,
             'rules' => [
 	            '<action:(payment-and-delivery|contacts)>' => 'site/<action>',
+				'<module:crm>/<controller:[a-zA-Z0-9\-]+>/<id:\d+>' => '<module>/<controller>/view',
+				'<module:crm>/<controller:[a-zA-Z0-9\-]+>/<action:\w+>/<id:\d+>' => '<module>/<controller>/<action>',
+				'<module:crm>/<controller:[a-zA-Z0-9\-]+>/<action:\w+>' => '<module>/<controller>/<action>',
+				'<module:crm>/<controller:[a-zA-Z0-9\-]+>' => '<module>/<controller>/index',
+				'<module:crm>' => '<module>/default/index',
             ],
         ],
     ],

@@ -116,7 +116,10 @@ a.desc:after {
     align-items: center;
     height: 80px;
 }
-.header .logo{
+.header .left{
+    display: flex;
+}
+.header .left .logo{
     display: flex;
     font-size: 30px;
     font-weight: bold;

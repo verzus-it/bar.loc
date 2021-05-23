@@ -30,8 +30,8 @@ $cartProductQty = is_array($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0
 <header>
 	<div class="container">
 		<div class="header">
-			<div class="logo">
-				<a href="/">2051</a>
+			<div class="left">
+				<a href="/" class="logo">2051</a>
 			</div>
 			<div class="right">
 				<div class="menu">
@@ -57,7 +57,8 @@ $cartProductQty = is_array($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0
 					Ми у соцмережах:
 				</div>
 				<div>
-					<a href="https://www.instagram.com/2051.kyiv.ua/" target="_blank"><img src="../images/icons/instagram.svg" alt="Instagram"></a>
+					скоро...
+<!--					<a href="https://www.instagram.com/2051.kyiv.ua/" target="_blank"><img src="../images/icons/instagram.svg" alt="Instagram"></a>-->
 				</div>
 			</div>
 			<div class="contacts">
