@@ -41,10 +41,22 @@ $cartProductQty = is_array($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0
 					<a href="#contacts" class="menuItem">Контакти</a>
 				</div>
 				<a href="javascript:$('.modal').addClass('opened')" class="cart"><?=$cartProductQty?></a>
+				<img src="images/burger.png" class="burger" alt="">
 			</div>
 		</div>
 	</div>
 </header>
+
+<div class="mobileMenu">
+	<div class="top">
+		<a href="/" class="logo">2051</a>
+		<img src="images/close.png" class="closeMobileMenu" alt="">
+	</div>
+	<a href="/" class="menuItem">Головна</a>
+	<a href="#cocktailMenu" class="menuItem">Коктейльна карта</a>
+	<a href="#paymentAndDelivery" class="menuItem">Доставка і оплата</a>
+	<a href="#contacts" class="menuItem">Контакти</a>
+</div>
 
 <?= Alert::widget() ?>
 <?= $content ?>
@@ -73,3 +85,15 @@ $cartProductQty = is_array($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0
 </body>
 </html>
 <?php $this->endPage() ?>
+<script>
+	$('.burger').click(function () {
+		$('.mobileMenu').addClass('opened');
+
+        $(document).mouseup(function (e){ // событие клика по веб-документу
+            $(".mobileMenu").removeClass('opened'); // скрываем его
+        });
+    })
+    $('.closeMobileMenu').click(function () {
+        $('.mobileMenu').removeClass('opened');
+	});
+</script>

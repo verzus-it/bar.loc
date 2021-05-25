@@ -126,6 +126,7 @@ a.desc:after {
 }
 .header .right{
     display: flex;
+    align-items: center;
 }
 .header .right .menu{
     display: flex;
@@ -133,6 +134,13 @@ a.desc:after {
     text-transform: uppercase;
     align-items: center;
 }
+.header .right .burger{
+    display: none;
+}
+.mobileMenu{
+    display: none;
+}
+
 .menu>.menuItem{
     color: #0f0f0f;
     margin: 5px 10px;
@@ -363,29 +371,59 @@ a.desc:after {
     width: 200px;
 }
 
-#paymentAndDelivery{
-    display: flex;
+@media (max-width: 991px) {
+
 }
 
-#paymentAndDelivery > div{
-    display: flex;
-    width: 50%;
-    height: 400px;
-    flex-direction: column;
-    padding: 30px;
-}
-#paymentAndDelivery > div > .title{
-    font-size: 42px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-#paymentAndDelivery > div > .text{
-    font-size: 20px;
-}
+@media (max-width: 767px) {
+    .header .right .menu{
+        display: none;
+    }
+    .header .right .burger{
+        display: flex;
+        width: 30px;
+        cursor: pointer;
+        margin-left: 20px;
+    }
+    .mobileMenu{
+        position: fixed;
+        right: 0px;
+        width: 320px;
+        flex-direction: column;
+        padding: 15px;
+        background: white;
+        font-size: 22px;
+        text-align: center;
+        top: 0;
+        bottom: 0;
+    }
+    .mobileMenu .top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+        margin-bottom: 10px;
+    }
+    .mobileMenu .top .logo{
+        font-size: 30px;
+        font-weight: bold;
+    }
+    .mobileMenu .closeMobileMenu{
+        display: flex;
+        width: 30px;
+        cursor: pointer;
+        margin-left: 20px;
+    }
+    .mobileMenu.opened{
+        display: flex;
+    }
+    .mobileMenu .menuItem {
+        border-bottom: 1px solid #0f0f0f;
+        margin: 3px 0px;
+        padding-bottom: 7px;
+    }
+    .mobileMenu .menuItem:last-child {
+        border-bottom: none;
+    }
 
-.payment{
-    background-color: #f4ebe2;
-}
-.delivery{
-    background-color: #f2d5ce;
 }

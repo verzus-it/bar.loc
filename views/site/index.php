@@ -13,8 +13,8 @@ $this->registerJsFile('@web/js/libs/jquery.maskedinput.min.js', ['depends' => 'y
 
 <div class="slidesPanel">
 	<div class="slideItem">Безкоштовна доставка замовлень від 700 грн</div>
-	<div class="slideItem">При замовленні від 1000 грн - подаруночок!</div>
-	<div class="slideItem">Спробуйте нові смаки</div>
+	<div class="slideItem">При замовленні від 1500 грн - подаруночок!</div>
+	<div class="slideItem">Спробуйте смаки, що перевірені часом</div>
 </div>
 
 <div class="mainContent">
