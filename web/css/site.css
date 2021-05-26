@@ -426,4 +426,24 @@ a.desc:after {
         border-bottom: none;
     }
 
+    .modal .modalBody {
+        width: 90%;
+    }
+
+}
+
+@media (max-width: 440px) {
+    .cartItem > .image{
+        display: none;
+    }
+    .modal .modalBody {
+        width: 100%;
+        padding: 48px 20px;
+    }
+    .orderData .inputLine{
+        width: calc(100% - 16px);
+    }
+    .cartItem > .title{
+        width: 170px;
+    }
 }
