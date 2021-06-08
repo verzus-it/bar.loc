@@ -203,7 +203,7 @@ a.desc:after {
 
 
 
-.modal {
+.modalWindow {
     width: 100%;
     position: fixed;
     display: none;
@@ -215,10 +215,10 @@ a.desc:after {
     overflow-y: scroll;
     padding: 20px;
 }
-.modal.opened {
+.modalWindow.opened {
     display: flex;
 }
-.modal .modalBody {
+.modalWindow .modalBody {
     position: relative;
     z-index: 2;
     display: block;
@@ -230,7 +230,7 @@ a.desc:after {
     padding: 48px 40px;
     width: 600px;
 }
-.modal .modalBody .modalClose {
+.modalWindow .modalBody .modalClose {
     position: absolute;
     background: url('../images/modal/close.svg');
     display: block;
@@ -240,10 +240,10 @@ a.desc:after {
     right: 20px;
     cursor: pointer;
 }
-.modal .modalBody .modalClose:hover {
+.modalWindow .modalBody .modalClose:hover {
     background: url('../images/modal/closeHover.svg');
 }
-.modal .modalBody .modalContent {
+.modalWindow .modalBody .modalContent {
     display: inherit;
 }
 

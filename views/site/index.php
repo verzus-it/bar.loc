@@ -178,9 +178,9 @@ $this->registerJsFile('@web/js/libs/jquery.maskedinput.min.js', ['depends' => 'y
 
 </script>
 
-<div class="modal">
+<div class="modalWindow">
 	<div class="modalBody">
-		<span class="modalClose" onclick="$('.modal').removeClass('opened')"></span>
+		<span class="modalClose" onclick="$('.modalWindow').removeClass('opened')"></span>
 		<div class="modalContent">
 
 			<div class="cartTitle">Ваше замовлення:</div>
