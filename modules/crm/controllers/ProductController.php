@@ -110,8 +110,9 @@ class ProductController extends Controller
 		if(Yii::$app->request->post() && $model->load(Yii::$app->request->post())){
 			$uploadedImage = UploadedFile::getInstance($model, 'image');
 			if($uploadedImage){
-				$uploadedImage->saveAs('uploads/products/' . $uploadedImage->baseName . '.' . $uploadedImage->extension);
-				$model->image = 'uploads/products/' . $uploadedImage->baseName . '.' . $uploadedImage->extension;
+				$imgPath = 'uploads/products/' . time().rand(100, 999) . '.' . $uploadedImage->extension;
+				$uploadedImage->saveAs($imgPath);
+				$model->image = $imgPath;
 			}
 			if($model->save()){
 				return $this->redirect(['view', 'id' => $model->id]);
