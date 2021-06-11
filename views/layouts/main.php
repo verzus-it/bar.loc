@@ -7,6 +7,7 @@ use app\widgets\Alert;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
@@ -41,6 +42,12 @@ $cartProductQty = is_array($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="images/favicons/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
+	
+	<meta property="og:url" content="<?= Yii::$app->homeUrl ?>" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="2051. Доставка алкогольних коктейлів по Києву та західному передмістю" />
+	<meta property="og:description" content="Змішуємо, охолоджуємо та доставляємо алкогольні коктейлі" />
+	<meta property="og:image" content="images/share.png" />
 </head>
 <body>
 <?php $this->beginBody() ?>
