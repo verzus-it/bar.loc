@@ -45,7 +45,7 @@ $cartProductQty = is_array($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0
 	
 	<meta property="og:url" content="<?= Yii::$app->homeUrl ?>" />
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content="2051. Доставка алкогольних коктейлів по Києву та західному передмістю" />
+	<meta property="og:title" content="2051. Виготоалення та доставка алкогольних коктейлів по Софіївській Борагівці та Вишневому" />
 	<meta property="og:description" content="Змішуємо, охолоджуємо та доставляємо алкогольні коктейлі" />
 	<meta property="og:image" content="images/share.png" />
 </head>

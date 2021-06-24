@@ -2,7 +2,9 @@
 
 /* @var $this yii\web\View */
 
-use yii\helpers\Url;$this->title = '2051 - Доставка коктейлей по Киеву. Главная';
+use yii\helpers\Url;
+
+$this->title = '2051. Виготоалення та доставка алкогольних коктейлів по Софіївській Борагівці та Вишневому';
 $this->registerCssFile('@web/css/pages/index.css');
 $this->registerCssFile('@web/css/libs/jquery.toast.css');
 $this->registerJsFile('@web/js/libs/jquery.toast.js', ['depends' => 'yii\web\JqueryAsset', 'position' => $this::POS_END]);
@@ -77,8 +79,7 @@ $this->registerJsFile('@web/js/libs/jquery.maskedinput.min.js', ['depends' => 'y
 					Оплата
 				</div>
 				<div class="text">
-					<p>Оплата здійснюється на карту ПриватБанку або Монобанку.</p>
-					<p>Також можлива оплата на рахунок ФОП</p>
+					<p>Оплата здійснюється на карту ПриватБанку або Монобанку</p>
 					<p>Оплата здійснюється до приготування коктейлів</p>
 				</div>
 			</div>
@@ -89,7 +90,7 @@ $this->registerJsFile('@web/js/libs/jquery.maskedinput.min.js', ['depends' => 'y
 				<div class="text">
 					<p>Приготування коктейлів відбувається безпосередньо перед відправленням.</p>
 					<p>Доставка відбувається мінімум за годину з часу оформлення замовлення</p>
-					<p>Доставка по Софіївськії Борщагівці та Вишневому безкоштовна. По Києву та передмістю - за тарифами таксі.</p>
+					<p>Доставка по Софіївськії Борщагівці та Вишневому безкоштовна.</p>
 				</div>
 			</div>
 		</div>
