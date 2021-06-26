@@ -4,7 +4,7 @@
 
 use yii\helpers\Url;
 
-$this->title = '2051. Виготоалення та доставка алкогольних коктейлів по Софіївській Борагівці та Вишневому';
+$this->title = '2051. Виготоалення та доставка алкогольних коктейлів по Софіївській Борщагівці та Вишневому';
 $this->registerCssFile('@web/css/pages/index.css');
 $this->registerCssFile('@web/css/libs/jquery.toast.css');
 $this->registerJsFile('@web/js/libs/jquery.toast.js', ['depends' => 'yii\web\JqueryAsset', 'position' => $this::POS_END]);
@@ -13,18 +13,37 @@ $this->registerJsFile('@web/js/libs/jquery.maskedinput.min.js', ['depends' => 'y
 
 ?>
 
-<div class="slidesPanel">
-	<div class="slideItem">Безкоштовна доставка замовлень від 700 грн</div>
-	<div class="slideItem">При замовленні від 1500 грн - подаруночок!</div>
-	<div class="slideItem">Спробуйте смаки, що перевірені часом</div>
-</div>
+<!--<div class="slidesPanel">-->
+<!--	<div class="slideItem">Безкоштовна доставка замовлень від 700 грн</div>-->
+<!--	<div class="slideItem">При замовленні від 1500 грн - подаруночок!</div>-->
+<!--	<div class="slideItem">Спробуйте смаки, що перевірені часом</div>-->
+<!--</div>-->
 
 <div class="mainContent">
 	<div class="wrap">
 		<div class="container">
 			<div class="mainTextWrapper">
 				<div class="mainText">Змішуємо, охолоджуємо та доставляємо алкогольні коктейлі</div>
-<!--				<a href="#" class="button dark">До коктейльної карти</a>-->
+				<div class="featuresWrapper">
+					<div class="feature">
+						<div class="title">Безкоштовна доставка замовлень</div>
+						<div class="text">
+							По Софіївській Борщагівці та Вишневому доставка здійснюється безкоштовно
+						</div>
+					</div>
+					<div class="feature">
+						<div class="title">При замовленні - подаруночок!</div>
+						<div class="text">
+							Отримайте додатково коктейль на дегустацію на вибір бармена при замовленні від 1000 грн
+						</div>
+					</div>
+					<div class="feature">
+						<div class="title">Смаки, що перевірені часом</div>
+						<div class="text">
+							Тільки відомі коктейлі, якими пригощають у всьому світі
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -46,8 +65,17 @@ $this->registerJsFile('@web/js/libs/jquery.maskedinput.min.js', ['depends' => 'y
 							<div class="title">
 								<?= $product->title ?>
 							</div>
-							<div class="description">
-								<?= $product->description ?>
+<!--							<div class="description">-->
+<!--								--><?//= $product->description ?>
+<!--							</div>-->
+							<div class="composition">
+								<?if($product->composition){?>
+									<ul>
+										<? foreach($product->composition as $item){?>
+											<li><?=$item->ingridient->title?></li>
+										<?}?>
+									</ul>
+								<?}?>
 							</div>
 						</div>
 						<div>
@@ -78,20 +106,20 @@ $this->registerJsFile('@web/js/libs/jquery.maskedinput.min.js', ['depends' => 'y
 				<div class="title">
 					Оплата
 				</div>
-				<div class="text">
-					<p>Оплата здійснюється на карту ПриватБанку або Монобанку</p>
-					<p>Оплата здійснюється до приготування коктейлів</p>
-				</div>
+				<ul class="text">
+					<li>Оплата здійснюється на карту ПриватБанку або Монобанку</li>
+					<li>Оплата здійснюється до приготування коктейлів</li>
+				</ul>
 			</div>
 			<div class="delivery">
 				<div class="title">
 					Доставка
 				</div>
-				<div class="text">
-					<p>Приготування коктейлів відбувається безпосередньо перед відправленням.</p>
-					<p>Доставка відбувається мінімум за годину з часу оформлення замовлення</p>
-					<p>Доставка по Софіївськії Борщагівці та Вишневому безкоштовна.</p>
-				</div>
+				<ul class="text">
+					<li>Приготування коктейлів відбувається безпосередньо перед відправленням.</li>
+					<li>Доставка відбувається мінімум за годину з часу оформлення замовлення</li>
+					<li>Доставка по Софіївськії Борщагівці та Вишневому безкоштовна.</li>
+				</ul>
 			</div>
 		</div>
 	</div>

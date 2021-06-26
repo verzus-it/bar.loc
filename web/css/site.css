@@ -2,7 +2,7 @@
 
 html,
 body {
-    font-family: OpenSans, serif;
+    font-family: Graphik, serif;
     height: 100%;
 }
 
@@ -116,37 +116,54 @@ a.desc:after {
     align-items: center;
     height: 80px;
 }
-.header .left{
-    display: flex;
-}
-.header .left .logo{
+
+.header .logo{
     display: flex;
     font-size: 30px;
     font-weight: bold;
 }
-.header .right{
+.header .menu{
     display: flex;
-    align-items: center;
-}
-.header .right .menu{
-    display: flex;
-    font-size: 14px;
     text-transform: uppercase;
     align-items: center;
 }
-.header .right .burger{
+.header .burger{
     display: none;
 }
 .mobileMenu{
     display: none;
 }
-
+.phoneWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.phoneWrapper > .icon > img{
+    width: 25px;
+    display: inline-block;
+    padding: 0 !important;
+    margin: 0 5px;
+}
+.phoneWrapper > .number{
+    padding-right: 5px;
+    padding-left: 5px;
+    font-weight: 600;
+    font-size: 18px;
+}
+.phoneWrapper > .number:hover{
+    color: #6694ce;
+}
 .menu>.menuItem{
-    color: #0f0f0f;
-    margin: 5px 10px;
+    transition: all .2s ease;
+    font-size: 17px;
+    color: #43484D;
+    font-weight: 400;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    line-height: 1em;
 }
 .menuItem:hover{
-    color: rgb(242, 213, 206);
+    color:#f26522;
     text-decoration: none;
 }
 .cart{
@@ -158,7 +175,6 @@ a.desc:after {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 12px;
 }
 
 .footer{
@@ -371,15 +387,28 @@ a.desc:after {
     width: 200px;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1199.5px){
+    .menu>.menuItem {
+        font-size: 14px;
+    }
+}
 
+@media (max-width: 991px) {
+    .header {
+        height: 100px;
+        flex-wrap: wrap;
+    }
 }
 
 @media (max-width: 767px) {
-    .header .right .menu{
+    .header{
+        flex-wrap: nowrap;
+        height: 70px;
+    }
+    .header .menu{
         display: none;
     }
-    .header .right .burger{
+    .header .burger{
         display: flex;
         width: 30px;
         cursor: pointer;
@@ -426,17 +455,29 @@ a.desc:after {
         border-bottom: none;
     }
 
-    .modal .modalBody {
+    .modalWindow .modalBody {
         width: 90%;
+    }
+    .cartItem > .image{
+        display: none;
+    }
+    .phoneWrapper > .number {
+        font-weight: normal;
+        font-size: 18px;
     }
 
 }
 
 @media (max-width: 440px) {
+    .header .logo{
+        display: none;
+        font-size: 30px;
+        font-weight: bold;
+    }
     .cartItem > .image{
         display: none;
     }
-    .modal .modalBody {
+    .modalWindow .modalBody {
         width: 100%;
         padding: 48px 20px;
     }
@@ -445,5 +486,12 @@ a.desc:after {
     }
     .cartItem > .title{
         width: 170px;
+    }
+    .footer {
+        padding: 0px;
+        flex-direction: column;
+    }
+    .footer > div{
+        margin: 10px;
     }
 }

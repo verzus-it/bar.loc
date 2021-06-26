@@ -45,7 +45,7 @@ $cartProductQty = is_array($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0
 	
 	<meta property="og:url" content="<?= Yii::$app->homeUrl ?>" />
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content="2051. Виготоалення та доставка алкогольних коктейлів по Софіївській Борагівці та Вишневому" />
+	<meta property="og:title" content="2051. Виготоалення та доставка алкогольних коктейлів по Софіївській Борщагівці та Вишневому" />
 	<meta property="og:description" content="Змішуємо, охолоджуємо та доставляємо алкогольні коктейлі" />
 	<meta property="og:image" content="images/share.png" />
 </head>
@@ -54,19 +54,27 @@ $cartProductQty = is_array($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0
 <header>
 	<div class="container">
 		<div class="header">
-			<div class="left">
-				<a href="/" class="logo">2051</a>
+			<a href="/" class="logo">2051</a>
+			<div class="phoneWrapper">
+				<a class="icon" href="viber://chat?number=74951285638">
+					<img src="images/icons/viber.svg">
+				</a>
+				<a class="icon" href="tg://chat?number=74951285638">
+					<img src="images/icons/telegram.svg">
+				</a>
+				<a class="icon" href="https://wa.me/74951285638" target="_blank">
+					<img src="images/icons/whatsapp.svg">
+				</a>
+				<a class="number" href="tel:84951285638">+38 (096) 621-86-21</a>
 			</div>
-			<div class="right">
-				<div class="menu">
-					<a href="/" class="menuItem">Головна</a>
-					<a href="#cocktailMenu" class="menuItem">Коктейльна карта</a>
-					<a href="#paymentAndDelivery" class="menuItem">Доставка і оплата</a>
-					<a href="#contacts" class="menuItem">Контакти</a>
-				</div>
-				<a href="javascript:$('.modalWindow').addClass('opened')" class="cart"><?=$cartProductQty?></a>
-				<img src="images/burger.png" class="burger" alt="">
+			<div class="menu">
+				<a href="/" class="menuItem">Головна</a>
+				<a href="#cocktailMenu" class="menuItem">Коктейльна карта</a>
+				<a href="#paymentAndDelivery" class="menuItem">Доставка і оплата</a>
+				<a href="#contacts" class="menuItem">Контакти</a>
 			</div>
+			<a href="javascript:$('.modalWindow').addClass('opened')" class="cart"><?=$cartProductQty?></a>
+			<img src="images/burger.png" class="burger" alt="">
 		</div>
 	</div>
 </header>
@@ -93,8 +101,7 @@ $cartProductQty = is_array($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0
 					Ми у соцмережах:
 				</div>
 				<div>
-					скоро...
-<!--					<a href="https://www.instagram.com/2051.kyiv.ua/" target="_blank"><img src="../images/icons/instagram.svg" alt="Instagram"></a>-->
+					<a href="https://www.instagram.com/2051.kyiv.ua/" target="_blank"><img src="images/icons/instagram.svg" alt="Instagram"></a>
 				</div>
 			</div>
 			<div class="contacts">
