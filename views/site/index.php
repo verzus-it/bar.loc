@@ -4,7 +4,7 @@
 
 use yii\helpers\Url;
 
-$this->title = '2051. Виготоалення та доставка алкогольних коктейлів по Софіївській Борщагівці та Вишневому';
+$this->title = '2051. Виготовлення та доставка алкогольних коктейлів по Софіївській Борщагівці та Вишневому';
 $this->registerCssFile('@web/css/pages/index.css');
 $this->registerCssFile('@web/css/libs/jquery.toast.css');
 $this->registerJsFile('@web/js/libs/jquery.toast.js', ['depends' => 'yii\web\JqueryAsset', 'position' => $this::POS_END]);
