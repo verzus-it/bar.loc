@@ -127,16 +127,16 @@ $this->registerJsFile('@web/js/libs/jquery.maskedinput.min.js', ['depends' => 'y
 
 <script>
     document.addEventListener("DOMContentLoaded", function(){
-        $(".slidesPanel > div:gt(0)").hide();
-
-        setInterval(function() {
-            $('.slidesPanel > div:first')
-                .fadeOut(1)
-                .next()
-                .fadeIn(500)
-                .end()
-                .appendTo('.slidesPanel');
-        },  5000);
+        // $(".slidesPanel > div:gt(0)").hide();
+		//
+        // setInterval(function() {
+        //     $('.slidesPanel > div:first')
+        //         .fadeOut(1)
+        //         .next()
+        //         .fadeIn(500)
+        //         .end()
+        //         .appendTo('.slidesPanel');
+        // },  5000);
         
         $('.optionsList').change(function (e) {
 			var price = $(e.target).find(':selected').data('price');
@@ -194,10 +194,13 @@ $this->registerJsFile('@web/js/libs/jquery.maskedinput.min.js', ['depends' => 'y
                         $(".modalContent").load(location.href+" .modalContent>*", function (){
                             $("#phone").mask("+38 (099) 999 99 99");
 						});
-                        $(".right").load(location.href+" .right>*","");
+                        $(".cartWrapper").load(location.href+" .cartWrapper>*","");
                     }else{
                         console.warn('Невалидный ответ');
                     }
+                },
+				error: function () {
+                    console.warn('Ошибка!');
                 }
             });
         }else{

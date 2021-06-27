@@ -42,7 +42,7 @@ $config = [
 		        'class' => 'Swift_SmtpTransport',
 		        'host' => 'mail.adm.tools',
 		        'username' => 'info@2051.kyiv.ua',
-		        'password' => '30irinoN',
+		        'password' => '5#4i8&A(KcdV',
 		        'port' => '465', // Port 25 is a very common port too
 		        'encryption' => 'ssl', // It is often used, check your provider or mail server specs
 	        ],

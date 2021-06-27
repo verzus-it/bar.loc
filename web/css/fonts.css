@@ -20,7 +20,7 @@
 /* Graphik Font */
 @font-face {
     font-family: 'Graphik';
-    src: url('../fonts/Graphik/regular.ttf') format('truetype');
+    src: url('../fonts/Graphik/Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }

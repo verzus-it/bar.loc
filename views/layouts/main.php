@@ -73,7 +73,10 @@ $cartProductQty = is_array($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0
 				<a href="#paymentAndDelivery" class="menuItem">Доставка і оплата</a>
 				<a href="#contacts" class="menuItem">Контакти</a>
 			</div>
-			<a href="javascript:$('.modalWindow').addClass('opened')" class="cart"><?=$cartProductQty?></a>
+			<div class="cartWrapper">
+				<a href="javascript:$('.modalWindow').addClass('opened')" class="cart"><?=$cartProductQty?></a>
+			</div>
+			
 			<img src="images/burger.png" class="burger" alt="">
 		</div>
 	</div>
