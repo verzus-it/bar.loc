@@ -56,16 +56,16 @@ $cartProductQty = is_array($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0
 		<div class="header">
 			<a href="/" class="logo">2051</a>
 			<div class="phoneWrapper">
-				<a class="icon" href="viber://chat?number=74951285638">
+				<a class="icon" href="viber://chat?number=%2B380974920743">
 					<img src="images/icons/viber.svg">
 				</a>
-				<a class="icon" href="tg://chat?number=74951285638">
+				<a class="icon" href="https://t.me/coctails_delivery_2051">
 					<img src="images/icons/telegram.svg">
 				</a>
-				<a class="icon" href="https://wa.me/74951285638" target="_blank">
+				<a class="icon" href="https://wa.me/380974920743" target="_blank">
 					<img src="images/icons/whatsapp.svg">
 				</a>
-				<a class="number" href="tel:84951285638">+38 (096) 621-86-21</a>
+				<a class="number" href="tel:380974920743">+38 (097) 492-07-43</a>
 			</div>
 			<div class="menu">
 				<a href="/" class="menuItem">Головна</a>
@@ -109,7 +109,7 @@ $cartProductQty = is_array($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0
 			</div>
 			<div class="contacts">
 				Київська обл. с. Софіївська Борщагівка
-				<br/>+380966218621
+				<br/>+38 (097) 492 07 43
 			</div>
 		</div>
 	</div>
