@@ -25,23 +25,46 @@ $cartProductQty = is_array($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-	<link rel="apple-touch-icon" sizes="57x57" href="images/favicons/apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="images/favicons/apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="images/favicons/apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="images/favicons/apple-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="images/favicons/apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="images/favicons/apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="images/favicons/apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="images/favicons/apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="images/favicons/apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192"  href="images/favicons/android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="images/favicons/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
+	<!-- Обязательный (и достаточный) тег для браузеров -->
+	<link type="image/x-icon" rel="shortcut icon" href="images/favicons/favicon.ico">
+
+	<!-- Дополнительные иконки для десктопных браузеров -->
+	<link type="image/png" sizes="16x16" rel="icon" href="images/favicons/favicon-16x16.png">
+	<link type="image/png" sizes="32x32" rel="icon" href="images/favicons/favicon-32x32.png">
+	<link type="image/png" sizes="96x96" rel="icon" href="images/favicons/favicon-96x96.png">
+	<link type="image/png" sizes="120x120" rel="icon" href="images/favicons/favicon-120x120.png">
+
+	<!-- Иконки для Android -->
+	<link type="image/png" sizes="72x72" rel="icon" href="images/favicons/android-icon-72x72.png">
+	<link type="image/png" sizes="96x96" rel="icon" href="images/favicons/android-icon-96x96.png">
+	<link type="image/png" sizes="144x144" rel="icon" href="images/favicons/android-icon-144x144.png">
+	<link type="image/png" sizes="192x192" rel="icon" href="images/favicons/android-icon-192x192.png">
+	<link type="image/png" sizes="512x512" rel="icon" href="images/favicons/android-icon-512x512.png">
 	<link rel="manifest" href="images/favicons/manifest.json">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="images/favicons/ms-icon-144x144.png">
-	<meta name="theme-color" content="#ffffff">
+
+	<!-- Иконки для iOS (Apple) -->
+	<link sizes="57x57" rel="apple-touch-icon" href="images/favicons/apple-touch-icon-57x57.png">
+	<link sizes="60x60" rel="apple-touch-icon" href="images/favicons/apple-touch-icon-60x60.png">
+	<link sizes="72x72" rel="apple-touch-icon" href="images/favicons/apple-touch-icon-72x72.png">
+	<link sizes="76x76" rel="apple-touch-icon" href="images/favicons/apple-touch-icon-76x76.png">
+	<link sizes="114x114" rel="apple-touch-icon" href="images/favicons/apple-touch-icon-114x114.png">
+	<link sizes="120x120" rel="apple-touch-icon" href="images/favicons/apple-touch-icon-120x120.png">
+	<link sizes="144x144" rel="apple-touch-icon" href="images/favicons/apple-touch-icon-144x144.png">
+	<link sizes="152x152" rel="apple-touch-icon" href="images/favicons/apple-touch-icon-152x152.png">
+	<link sizes="180x180" rel="apple-touch-icon" href="images/favicons/apple-touch-icon-180x180.png">
+
+	<!-- Иконки для MacOS (Apple) -->
+	<link color="#e52037" rel="mask-icon" href="images/favicons/safari-pinned-tab.svg">
+
+	<!-- Иконки и цвета для плиток Windows -->
+	<meta name="msapplication-TileColor" content="#2b5797">
+	<meta name="msapplication-TileImage" content="images/favicons/mstile-144x144.png">
+	<meta name="msapplication-square70x70logo" content="images/favicons/mstile-70x70.png">
+	<meta name="msapplication-square150x150logo" content="images/favicons/mstile-150x150.png">
+	<meta name="msapplication-wide310x150logo" content="images/favicons/mstile-310x310.png">
+	<meta name="msapplication-square310x310logo" content="images/favicons/mstile-310x150.png">
+	<meta name="application-name" content="My Application">
+	<meta name="msapplication-config" content="images/favicons/browserconfig.xml">
 	
 	<meta property="og:url" content="<?= Yii::$app->homeUrl ?>" />
 	<meta property="og:type" content="website" />
@@ -70,7 +93,7 @@ $cartProductQty = is_array($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0
 			<div class="menu">
 				<a href="/" class="menuItem">Головна</a>
 				<a href="#cocktailMenu" class="menuItem">Коктейльна карта</a>
-				<a href="#paymentAndDelivery" class="menuItem">Доставка і оплата</a>
+				<a href="#paymentAndDelivery" class="menuItem">Інформація</a>
 				<a href="#contacts" class="menuItem">Контакти</a>
 			</div>
 			<div class="cartWrapper">
@@ -89,7 +112,7 @@ $cartProductQty = is_array($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0
 	</div>
 	<a href="/" class="menuItem">Головна</a>
 	<a href="#cocktailMenu" class="menuItem">Коктейльна карта</a>
-	<a href="#paymentAndDelivery" class="menuItem">Доставка і оплата</a>
+	<a href="#paymentAndDelivery" class="menuItem">Інформація</a>
 	<a href="#contacts" class="menuItem">Контакти</a>
 </div>
 

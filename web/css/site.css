@@ -387,6 +387,21 @@ a.desc:after {
     width: 200px;
 }
 
+.loader{
+    display: flex;
+}
+.loader::after{
+    content: "";
+    position: absolute;
+    top: -8px;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    background: rgba(251, 251, 254, 0.8) url('../images/loader.svg') no-repeat center;
+    border-radius: 10px;
+    background-size: 50px;
+}
+
 @media (max-width: 1199.5px){
     .menu>.menuItem {
         font-size: 14px;

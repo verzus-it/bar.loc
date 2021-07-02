@@ -104,6 +104,13 @@ $this->registerJsFile('@web/js/libs/jquery.maskedinput.min.js', ['depends' => 'y
 		<div id="paymentAndDelivery">
 			<div class="payment">
 				<div class="title">
+					Графік роботи
+				</div>
+				<ul class="text">
+					<li>Щоденно з 18:00 до 23:00</li>
+				</ul>
+				
+				<div class="title">
 					Оплата
 				</div>
 				<ul class="text">
@@ -119,6 +126,7 @@ $this->registerJsFile('@web/js/libs/jquery.maskedinput.min.js', ['depends' => 'y
 					<li>Приготування коктейлів відбувається безпосередньо перед відправленням.</li>
 					<li>Доставка відбувається мінімум за годину з часу оформлення замовлення</li>
 					<li>Доставка по Софіївськії Борщагівці та Вишневому безкоштовна.</li>
+					<li>Доставка по Києву - 110 грн</li>
 				</ul>
 			</div>
 		</div>
@@ -163,7 +171,11 @@ $this->registerJsFile('@web/js/libs/jquery.maskedinput.min.js', ['depends' => 'y
                 data: $('.orderData').find('input, textarea').serialize(),
                 type: 'POST',
                 dataType: 'json',
+                beforeSend: function(){
+					$('.modalContent').prepend('<div class="loader"></div>');
+                },
                 success: function(response) {
+                    $('.loader').remove();
                     if(response.status){
                         $('.modalContent').html(response.html);
 					}else{
@@ -172,6 +184,13 @@ $this->registerJsFile('@web/js/libs/jquery.maskedinput.min.js', ['depends' => 'y
                             icon: 'warning'
                         })
 					}
+                },
+				error: function () {
+                    $('.loader').remove();
+                    $.toast({
+                        text : 'Щось не так. Оновіть сторінку та спробуйте ще раз або залиште замовлення через мессенджери та по телефону',
+                        icon: 'warning'
+                    })
                 }
             });
         })
@@ -214,7 +233,6 @@ $this->registerJsFile('@web/js/libs/jquery.maskedinput.min.js', ['depends' => 'y
 	<div class="modalBody">
 		<span class="modalClose" onclick="$('.modalWindow').removeClass('opened')"></span>
 		<div class="modalContent">
-
 			<div class="cartTitle">Ваше замовлення:</div>
 			<div class="cartItems">
 				<?if($cart['products']){?>

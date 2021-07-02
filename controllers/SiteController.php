@@ -168,15 +168,20 @@ class SiteController extends Controller
 			    $cart['totalAmount'] += $qty * $productOption->price;
 		    }
 		    
-		    unset($_SESSION['cart']);
-		    
-			Yii::$app->mailer->compose('newOrderToOwner', ['cart' => $cart, 'customer' => $customer])
+			$mailSent = Yii::$app->mailer->compose('newOrderToOwner', ['cart' => $cart, 'customer' => $customer])
 				->setFrom(['info@2051.kyiv.ua' => '2051. Доставка коктейлів'])
 				->setTo('s.sulacov@gmail.com')
 				->setSubject('Нове замовлення')
 				->send();
+		
+		    if($mailSent){
+			    unset($_SESSION['cart']);
+			
+			    return json_encode(['status' => true, 'html' => $this->renderAjax('confirmOrder')], JSON_UNESCAPED_UNICODE);
+		    }else{
+			    return json_encode(['status' => false, 'data' => ['message' => 'Щось не так. Оновіть сторінку та спробуйте ще раз або залиште замовлення через мессенджери та по телефону']], JSON_UNESCAPED_UNICODE);
+		    }
 		    
-		    return json_encode(['status' => true, 'html' => $this->renderAjax('confirmOrder')], JSON_UNESCAPED_UNICODE);
 		    
 	    }else{
     	    return json_encode(['status' => false, 'data' => ['message' => 'Пусте замовлення. Додайте улюбленні коктейлі та підтвердіть замовлення']], JSON_UNESCAPED_UNICODE);
