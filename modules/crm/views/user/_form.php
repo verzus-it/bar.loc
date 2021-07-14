@@ -18,21 +18,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'birthdate')->textInput() ?>
 
-    <?= $form->field($model, 'gender')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'gender')->dropDownList(['male' => 'мужской', 'female' => 'женский']) ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'createdDate')->textInput() ?>
-
-    <?= $form->field($model, 'updatedDate')->textInput() ?>
-
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'authKey')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'accessToken')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'active')->textInput() ?>
 

@@ -8,11 +8,15 @@ $config = [
 	'name' => '2051',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+	'language' => 'ru',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+	    'authManager' => [
+		    'class' => 'yii\rbac\DbManager',
+	    ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'GqPju7Kv52ghCF7ehIB2AZ0lt27wA6AE',
@@ -24,6 +28,7 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
+	        'loginUrl' => ['login'],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -62,6 +67,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
 	            '<action:(payment-and-delivery|contacts)>' => 'site/<action>',
+	            '<action:login>' => 'site/login',
 				'<module:crm>/<controller:[a-zA-Z0-9\-]+>/<id:\d+>' => '<module>/<controller>/view',
 				'<module:crm>/<controller:[a-zA-Z0-9\-]+>/<action:\w+>/<id:\d+>' => '<module>/<controller>/<action>',
 				'<module:crm>/<controller:[a-zA-Z0-9\-]+>/<action:\w+>' => '<module>/<controller>/<action>',
@@ -75,6 +81,29 @@ $config = [
 			'class' => 'app\modules\crm\Module',
 			'layout' => 'main',
 		],
+		'rbac' => [
+			'class' => 'mdm\admin\Module',
+			'controllerMap' => [
+				'assignment' => [
+					'class' => 'mdm\admin\controllers\AssignmentController',
+					/* 'userClassName' => 'app\models\User', */
+					'idField' => 'id',
+//					'usernameField' => 'email',
+//					'fullnameField' => 'email',
+				],
+			],
+			'layout' => 'left-menu',
+			'mainLayout' => '@app/modules/crm/views/layouts/main.php',
+		],
+	],
+	'as access' => [
+		'class' => 'mdm\admin\components\AccessControl',
+		'allowActions' => [
+			'site/*',
+			'rbac/*',
+			'gii/*',
+			//'crm/*',
+		]
 	],
     'params' => $params,
 ];

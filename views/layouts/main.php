@@ -25,6 +25,7 @@ $cartProductQty = is_array($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+	<base href="<?= Yii::$app->homeUrl ?>">
 	<!-- Обязательный (и достаточный) тег для браузеров -->
 	<link type="image/x-icon" rel="shortcut icon" href="images/favicons/favicon.ico">
 

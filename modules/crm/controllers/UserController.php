@@ -65,10 +65,19 @@ class UserController extends Controller
     public function actionCreate()
     {
         $model = new User();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+	
+        if(Yii::$app->request->post()){
+	        $model->load(Yii::$app->request->post());
+	        $model->createdDate = date('Y-m-d H:i:s');
+	        $model->updatedDate = date('Y-m-d H:i:s');
+	        $model->active = is_null($model->active) ? 1 : (int)$model->active;
+			$model->password = md5($model->password);
+				
+	        if ($model->save()) {
+		        return $this->redirect(['view', 'id' => $model->id]);
+	        }
         }
+	    
 
         return $this->render('create', [
             'model' => $model,
