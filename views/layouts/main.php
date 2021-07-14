@@ -72,6 +72,17 @@ $cartProductQty = is_array($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0
 	<meta property="og:title" content="2051. Виготовлення та доставка алкогольних коктейлів по Софіївській Борщагівці та Вишневому" />
 	<meta property="og:description" content="Змішуємо, охолоджуємо та доставляємо алкогольні коктейлі" />
 	<meta property="og:image" content="images/share.png" />
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-LTK9F8Z0WG"></script>
+	<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-LTK9F8Z0WG');
+	</script>
+	
 </head>
 <body>
 <?php $this->beginBody() ?>
