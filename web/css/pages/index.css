@@ -1,21 +1,22 @@
-.slidesPanel{
+.notification{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50px;
-    background-color: #0f0f0f;
+    background-color: #3c763d;
     color: white;
     font-size: 16px;
+    padding: 15px 10px;
+    text-align: center;
+}
+
+.notification.important{
+    background-color: #a94442;
 }
 
 .mainContent{
     background: #ebf4ff;
 }
 .mainTextWrapper{
-    /*background-image: url("../../images/cocktails2.png");*/
-    /*background-position: right 10px center;*/
-    /*background-size: 500px;*/
-    /*background-repeat: no-repeat;*/
     min-height: 300px;
     display: flex;
     flex-direction: column;

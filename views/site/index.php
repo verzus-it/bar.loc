@@ -5,7 +5,7 @@
 use yii\helpers\Url;
 
 $this->title = '2051. Виготовлення та доставка алкогольних коктейлів по Софіївській Борщагівці та Вишневому';
-$this->registerCssFile('@web/css/pages/index.css');
+$this->registerCssFile('@web/css/pages/index.css?v=1.1');
 $this->registerCssFile('@web/css/libs/jquery.toast.css');
 $this->registerJsFile('@web/js/libs/jquery.toast.js', ['depends' => 'yii\web\JqueryAsset', 'position' => $this::POS_END]);
 $this->registerJsFile('@web/js/libs/jquery.maskedinput.min.js', ['depends' => 'yii\web\JqueryAsset', 'position' => $this::POS_END]);
@@ -13,11 +13,9 @@ $this->registerJsFile('@web/js/libs/jquery.maskedinput.min.js', ['depends' => 'y
 
 ?>
 
-<!--<div class="slidesPanel">-->
-<!--	<div class="slideItem">Безкоштовна доставка замовлень від 700 грн</div>-->
-<!--	<div class="slideItem">При замовленні від 1500 грн - подаруночок!</div>-->
-<!--	<div class="slideItem">Спробуйте смаки, що перевірені часом</div>-->
-<!--</div>-->
+<div class="notification">
+	Працюємо щодня з 18:00 до 23:00. До зустрічі! 🍹
+</div>
 
 <div class="mainContent">
 	<div class="wrap">
@@ -135,16 +133,6 @@ $this->registerJsFile('@web/js/libs/jquery.maskedinput.min.js', ['depends' => 'y
 
 <script>
     document.addEventListener("DOMContentLoaded", function(){
-        // $(".slidesPanel > div:gt(0)").hide();
-		//
-        // setInterval(function() {
-        //     $('.slidesPanel > div:first')
-        //         .fadeOut(1)
-        //         .next()
-        //         .fadeIn(500)
-        //         .end()
-        //         .appendTo('.slidesPanel');
-        // },  5000);
         
         $('.optionsList').change(function (e) {
 			var price = $(e.target).find(':selected').data('price');
